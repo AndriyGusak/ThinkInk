@@ -2,6 +2,10 @@
 document.documentElement.classList.add('js');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* Переклад рядків скрипту: словник TI_I18N вставляє build-langs.cjs у мовні сторінки (en/, de/ …) */
+const I18N = window.TI_I18N || {};
+const t = s => I18N[s] || s;
+
 /* Іконки Lucide з icons.js */
 function paintIcons(root = document) {
   root.querySelectorAll('svg[data-icon]').forEach(svg => {
@@ -22,55 +26,55 @@ function setTheme(theme) {
   try { localStorage.setItem('ti-theme', theme); } catch (e) {}
 }
 themeButtons.forEach(b => b.addEventListener('click', () => setTheme(b.dataset.setTheme)));
-setTheme(document.documentElement.dataset.theme || 'system');
+setTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
 
 /* Режими — назви, кольори й іконки як у віджеті; приклади з навчання програми */
 const MODES = [
-  { id: 'dictation', name: 'Голосове введення', icon: 'audio-lines', color: '#4a91ee', key: 'Right Alt',
-    desc: 'Перетворює мовлення на текст без додаткового редагування.',
-    said: 'Треба купити молоко, хліб і яблука. Магазин біля дому закривається о дев’ятій.',
-    got: 'Треба купити молоко, хліб і яблука. Магазин біля дому закривається о дев’ятій.' },
-  { id: 'live', name: 'Миттєве диктування', icon: 'zap', color: '#e8b339', key: 'Не призначено',
-    desc: 'Вставляє текст просто під час диктування, без адаптації.',
-    said: 'Пишу звіт за жовтень, перший розділ про продажі…',
-    got: 'Пишу звіт за жовтень, перший розділ про продажі…' },
-  { id: 'polish', name: 'Виправлення', icon: 'sparkles', color: '#ac86e9', key: 'Ctrl + Alt + 2',
-    desc: 'Очищає усне мовлення від затинань і зайвих повторів, зберігаючи зміст і тон.',
-    said: 'Я, е-е, надішлю тобі кошторис завтра, ні, у п’ятницю. Треба ще, ще перевірити цифри.',
-    got: 'Я надішлю тобі кошторис у п’ятницю. Треба ще перевірити цифри.' },
-  { id: 'formal', name: 'Діловий', icon: 'briefcase-business', color: '#5b9cba', key: 'Ctrl + Alt + 3',
-    desc: 'Переписує текст у чіткому діловому тоні, зберігаючи факти й намір.',
-    said: 'Я не встигаю глянути кошторис сьогодні. Давайте перенесемо обговорення на п’ятницю.',
-    got: 'Я не встигаю переглянути кошторис сьогодні. Пропоную перенести обговорення на п’ятницю.' },
-  { id: 'natural', name: 'Дружній тон', icon: 'messages-square', color: '#90bf6b', key: 'Ctrl + Alt + 4',
-    desc: 'Робить формулювання простішими й дружнішими, зберігаючи зміст.',
-    said: 'Прошу повідомити, чи матимете ви можливість переглянути кошторис до п’ятниці.',
-    got: 'Підкажіть, будь ласка, чи зможете переглянути кошторис до п’ятниці.' },
-  { id: 'literary', name: 'Літературний', icon: 'book-open', color: '#b58ad4', key: 'Не призначено',
-    desc: 'Надає тексту літературних формулювань, зберігаючи зміст і тон.',
-    said: 'Ну короче вчора ми ходили в парк, і там було так класно, листя таке жовте всюди.',
-    got: 'Учора ми гуляли в парку. Там було чудово: усюди лежало жовте листя.' },
-  { id: 'summary', name: 'Без води', icon: 'list-filter', color: '#d59c53', key: 'Не призначено',
-    desc: 'Прибирає воду й повторення думок, зберігає суттєві деталі.',
-    said: 'Значить, по зустрічі… ми там довго говорили, але, загалом, вирішили, що запуск переносимо на десяте листопада, бо дизайн ще не готовий, ну і Оля відповідає за тексти.',
-    got: 'Запуск перенесено на 10 листопада: дизайн ще не готовий. За тексти відповідає Оля.' },
-  { id: 'translation', name: 'Переклад', icon: 'languages', color: '#e8a12f', key: 'Right Alt + Right Shift',
-    desc: 'Перекладає текст обраною мовою, зберігаючи зміст і тон.',
-    said: 'Я не зможу приєднатися о третій. Можемо поговорити приблизно через пів години?',
-    got: 'I won’t be able to join at three. Could we talk in about half an hour?' },
-  { id: 'prompt', name: 'Створення промпту', icon: 'wand-sparkles', color: '#b47bdc', key: 'Ctrl + Alt + 5',
-    desc: 'Структурує твоє завдання як запит для ШІ, не виконуючи його.',
-    said: 'Хочу підтягнути англійську для робочих зустрічей. У мене B1 і двадцять хвилин на день. Склади план на чотири тижні, таблицею.',
-    got: 'Склади план вивчення англійської на 4 тижні для участі в робочих зустрічах.\n\nКонтекст: мій рівень — B1; маю 20 хвилин на день.\nФормат результату: таблиця.' },
-  { id: 'email', name: 'Електронний лист', icon: 'mail', color: '#6597c9', key: 'Ctrl + Alt + 7',
-    desc: 'Оформлює диктування як лист із привітанням, абзацами й підписом.',
-    said: 'Лист Олені. Попроси надіслати оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.',
-    got: 'Добрий день, Олено!\n\nБудь ласка, надішліть оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.\n\nЗ повагою,\n[Ваше ім’я]' },
-  { id: 'selection', name: 'Редагування', icon: 'text-cursor-input', color: '#6597c9', key: 'Ctrl + Alt + E',
-    desc: 'Переробляє виділений текст за голосовою командою і копіює результат у буфер обміну.',
-    said: '«Скороти, але збережи всі дати»',
-    gotLabel: 'У буфері обміну',
-    got: 'Скорочений варіант із тими самими датами. Встав його через Ctrl\u00a0+\u00a0V там, де він потрібен.' }
+  { id: 'dictation', name: t('Голосове введення'), icon: 'audio-lines', color: '#4a91ee', key: 'Right Alt',
+    desc: t('Перетворює мовлення на текст без додаткового редагування.'),
+    said: t('Треба купити молоко, хліб і яблука. Магазин біля дому закривається о дев’ятій.'),
+    got: t('Треба купити молоко, хліб і яблука. Магазин біля дому закривається о дев’ятій.') },
+  { id: 'live', name: t('Миттєве диктування'), icon: 'zap', color: '#e8b339', key: t('Не призначено'),
+    desc: t('Вставляє текст просто під час диктування, без адаптації.'),
+    said: t('Пишу звіт за жовтень, перший розділ про продажі…'),
+    got: t('Пишу звіт за жовтень, перший розділ про продажі…') },
+  { id: 'polish', name: t('Виправлення'), icon: 'sparkles', color: '#ac86e9', key: 'Ctrl + Alt + 2',
+    desc: t('Очищає усне мовлення від затинань і зайвих повторів, зберігаючи зміст і тон.'),
+    said: t('Я, е-е, надішлю тобі кошторис завтра, ні, у п’ятницю. Треба ще, ще перевірити цифри.'),
+    got: t('Я надішлю тобі кошторис у п’ятницю. Треба ще перевірити цифри.') },
+  { id: 'formal', name: t('Діловий'), icon: 'briefcase-business', color: '#5b9cba', key: 'Ctrl + Alt + 3',
+    desc: t('Переписує текст у чіткому діловому тоні, зберігаючи факти й намір.'),
+    said: t('Я не встигаю глянути кошторис сьогодні. Давайте перенесемо обговорення на п’ятницю.'),
+    got: t('Я не встигаю переглянути кошторис сьогодні. Пропоную перенести обговорення на п’ятницю.') },
+  { id: 'natural', name: t('Дружній тон'), icon: 'messages-square', color: '#90bf6b', key: 'Ctrl + Alt + 4',
+    desc: t('Робить формулювання простішими й дружнішими, зберігаючи зміст.'),
+    said: t('Прошу повідомити, чи матимете ви можливість переглянути кошторис до п’ятниці.'),
+    got: t('Підкажіть, будь ласка, чи зможете переглянути кошторис до п’ятниці.') },
+  { id: 'literary', name: t('Літературний'), icon: 'book-open', color: '#b58ad4', key: t('Не призначено'),
+    desc: t('Надає тексту літературних формулювань, зберігаючи зміст і тон.'),
+    said: t('Ну короче вчора ми ходили в парк, і там було так класно, листя таке жовте всюди.'),
+    got: t('Учора ми гуляли в парку. Там було чудово: усюди лежало жовте листя.') },
+  { id: 'summary', name: t('Без води'), icon: 'list-filter', color: '#d59c53', key: t('Не призначено'),
+    desc: t('Прибирає воду й повторення думок, зберігає суттєві деталі.'),
+    said: t('Значить, по зустрічі… ми там довго говорили, але, загалом, вирішили, що запуск переносимо на десяте листопада, бо дизайн ще не готовий, ну і Оля відповідає за тексти.'),
+    got: t('Запуск перенесено на 10 листопада: дизайн ще не готовий. За тексти відповідає Оля.') },
+  { id: 'translation', name: t('Переклад'), icon: 'languages', color: '#e8a12f', key: 'Right Alt + Right Shift',
+    desc: t('Перекладає текст обраною мовою, зберігаючи зміст і тон.'),
+    said: t('Я не зможу приєднатися о третій. Можемо поговорити приблизно через пів години?'),
+    got: t('I won’t be able to join at three. Could we talk in about half an hour?') },
+  { id: 'prompt', name: t('Створення промпту'), icon: 'wand-sparkles', color: '#b47bdc', key: 'Ctrl + Alt + 5',
+    desc: t('Структурує твоє завдання як запит для ШІ, не виконуючи його.'),
+    said: t('Хочу підтягнути англійську для робочих зустрічей. У мене B1 і двадцять хвилин на день. Склади план на чотири тижні, таблицею.'),
+    got: t('Склади план вивчення англійської на 4 тижні для участі в робочих зустрічах.\n\nКонтекст: мій рівень — B1; маю 20 хвилин на день.\nФормат результату: таблиця.') },
+  { id: 'email', name: t('Електронний лист'), icon: 'mail', color: '#6597c9', key: 'Ctrl + Alt + 7',
+    desc: t('Оформлює диктування як лист із привітанням, абзацами й підписом.'),
+    said: t('Лист Олені. Попроси надіслати оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.'),
+    got: t('Добрий день, Олено!\n\nБудь ласка, надішліть оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.\n\nЗ повагою,\n[Ваше ім’я]') },
+  { id: 'selection', name: t('Редагування'), icon: 'text-cursor-input', color: '#6597c9', key: 'Ctrl + Alt + E',
+    desc: t('Переробляє виділений текст за голосовою командою і копіює результат у буфер обміну.'),
+    said: t('«Скороти, але збережи всі дати»'),
+    gotLabel: t('У буфері обміну'),
+    got: t('Скорочений варіант із тими самими датами. Встав його через Ctrl\u00a0+\u00a0V там, де він потрібен.') }
 ];
 
 const list = document.getElementById('mode-list');
@@ -118,7 +122,7 @@ function selectMode(i, byUser) {
   document.getElementById('mp-desc').textContent = m.desc;
   document.getElementById('mp-said').textContent = m.said;
   document.getElementById('mp-got').textContent = m.got;
-  document.getElementById('mp-got-label').textContent = m.gotLabel || 'У полі з’явилося';
+  document.getElementById('mp-got-label').textContent = m.gotLabel || t('У полі з’явилося');
   paintIcons(panel);
   const body = panel.querySelector('.mp-body');
   body.classList.remove('mp-swap'); void body.offsetWidth; body.classList.add('mp-swap');
@@ -147,13 +151,14 @@ function progress(el) {
 }
 
 /* Сцена «голос → текст» */
-const SPOKEN = 'Я, е-е, надішлю тобі кошторис завтра, ні, у п’ятницю. Треба ще, ще перевірити цифри. Можливо, сума трохи зміниться.';
-const JUNK = new Set([1, 5, 6, 10]); // «е-е,», «завтра,», «ні,», повторне «ще,»
+// Слова в [дужках] — запинки й повтори, які викреслюються
+const SPOKEN = t('Я, [е-е,] надішлю тобі кошторис [завтра,] [ні,] у п’ятницю. Треба ще, [ще,] перевірити цифри. Можливо, сума трохи зміниться.');
 const speech = document.getElementById('speech');
 const words = SPOKEN.split(' ').map((w, i) => {
   const s = document.createElement('span');
-  s.className = 'w' + (JUNK.has(i) ? ' junk' : '');
-  s.textContent = w;
+  const junk = /^\[.*\]$/.test(w);
+  s.className = 'w' + (junk ? ' junk' : '');
+  s.textContent = junk ? w.slice(1, -1) : w;
   s.style.setProperty('--fx', ((i % 2 ? 1 : -1) * (30 + i * 4)) + 'px');
   s.style.setProperty('--fr', ((i % 2 ? 1 : -1) * 18) + 'deg');
   speech.append(s, document.createTextNode(' '));
@@ -174,7 +179,7 @@ function renderScene(p) {
   result.classList.toggle('in', p > .7);
   const done = p > .66;
   sceneWidget.dataset.state = done ? 'done' : 'recording';
-  sceneWidget.querySelector('.w-name').textContent = done ? 'Готово' : 'Виправлення';
+  sceneWidget.querySelector('.w-name').textContent = done ? t('Готово') : MODES.find(m => m.id === 'polish').name;
   const rec = sceneWidget.querySelector('.w-rec svg');
   if (rec.dataset.icon !== (done ? 'mic' : 'arrow-up')) { rec.dataset.icon = done ? 'mic' : 'arrow-up'; delete rec.dataset.painted; paintIcons(sceneWidget); }
   const step = p < .4 ? 0 : p < .66 ? 1 : 2;
@@ -238,10 +243,10 @@ else { io.observe(list); document.querySelectorAll('[data-reveal]').forEach(el =
 
 /* Вигляд віджета у спокої */
 const SIZE_NOTES = {
-  mini: 'Міні: тонка смужка, яка не заважає. Наведи курсор — вона підросте.',
-  compact: 'Компакт: невелика капсула з кнопкою режиму й мікрофоном.',
-  large: 'Великий: режим, назва й кнопка запису в одній капсулі.',
-  auto: 'Авто: тонка смужка у спокої, капсула при наведенні, а після затримки — повний віджет.'
+  mini: t('Міні: тонка смужка, яка не заважає. Наведи курсор — вона підросте.'),
+  compact: t('Компакт: невелика капсула з кнопкою режиму й мікрофоном.'),
+  large: t('Великий: режим, назва й кнопка запису в одній капсулі.'),
+  auto: t('Авто: тонка смужка у спокої, капсула при наведенні, а після затримки — повний віджет.')
 };
 const liveWidget = document.querySelector('.live-widget');
 const sizeNote = document.getElementById('size-note');
@@ -267,7 +272,7 @@ const asList = document.getElementById('as-list');
   const m = MODES.find(x => x.id === id);
   const row = document.createElement('div');
   row.className = 'as-row';
-  row.innerHTML = `<span class="grip"><svg data-icon="grip-vertical"></svg></span><span class="mi" style="color:${m.color}"><svg data-icon="${m.icon}"></svg></span><span>${m.name}</span><span class="as-keys"><span>${m.key}</span><span>Натискання</span></span><span class="toggle" aria-checked="true"></span>`;
+  row.innerHTML = `<span class="grip"><svg data-icon="grip-vertical"></svg></span><span class="mi" style="color:${m.color}"><svg data-icon="${m.icon}"></svg></span><span>${m.name}</span><span class="as-keys"><span>${m.key}</span><span>${t('Натискання')}</span></span><span class="toggle" aria-checked="true"></span>`;
   asList.append(row);
 });
 paintIcons(asList);
@@ -282,7 +287,7 @@ fetch('https://api.github.com/repos/AndriyGusak/ThinkInk/releases/latest')
     const version = String(rel.tag_name || '').replace(/^v/, '');
     document.querySelectorAll('a[data-download]').forEach(a => {
       a.href = exe.browser_download_url;
-      if (version) a.title = `Інсталятор ThinkInk ${version} для Windows`;
+      if (version) a.title = t('Інсталятор ThinkInk {v} для Windows').replace('{v}', version);
     });
   })
   .catch(() => {});
@@ -298,3 +303,13 @@ function openFaqFromHash() {
 }
 addEventListener('hashchange', openFaqFromHash);
 openFaqFromHash();
+
+/* Мова сайту: меню закривається кліком поза ним або Escape; вибір запам’ятовується */
+const langMenu = document.querySelector('[data-lang-menu]');
+if (langMenu) {
+  document.addEventListener('click', e => { if (!langMenu.contains(e.target)) langMenu.open = false; });
+  langMenu.addEventListener('keydown', e => { if (e.key === 'Escape' && langMenu.open) { langMenu.open = false; langMenu.querySelector('summary').focus(); } });
+  langMenu.querySelectorAll('a[data-lang]').forEach(a => a.addEventListener('click', () => {
+    try { localStorage.setItem('ti-lang', a.dataset.lang); } catch (e) {}
+  }));
+}

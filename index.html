@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk" data-theme="system">
+<html lang="uk" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,9 +8,40 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="assets/brand/thinkink-3d.png">
 <link rel="stylesheet" href="styles.css">
+<!-- i18n:links — адреси мовних версій; оновлює build-langs.cjs -->
+<link rel="canonical" href="https://thinkink.com.ua/">
+<link rel="alternate" hreflang="uk" href="https://thinkink.com.ua/">
+<link rel="alternate" hreflang="en" href="https://thinkink.com.ua/en/">
+<link rel="alternate" hreflang="de" href="https://thinkink.com.ua/de/">
+<link rel="alternate" hreflang="es" href="https://thinkink.com.ua/es/">
+<link rel="alternate" hreflang="pl" href="https://thinkink.com.ua/pl/">
+<link rel="alternate" hreflang="fr" href="https://thinkink.com.ua/fr/">
+<link rel="alternate" hreflang="it" href="https://thinkink.com.ua/it/">
+<link rel="alternate" hreflang="pt" href="https://thinkink.com.ua/pt/">
+<link rel="alternate" hreflang="x-default" href="https://thinkink.com.ua/en/">
+<!-- /i18n:links -->
 <script>
-  // Тема застосовується до першого малювання, щоб не блимало.
-  try { const t = localStorage.getItem('ti-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  // Мова: на головній (українській) адресі — перехід на збережену мову або мову браузера.
+  // Пошукових роботів не перенаправляємо, щоб вони бачили кожну мову за своєю адресою.
+  try {
+    if (document.documentElement.lang === 'uk' && /^\/(index\.html)?$/.test(location.pathname) && !/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent)) {
+      const langs = ['en', 'uk', 'de', 'es', 'pl', 'fr', 'it', 'pt'];
+      let pick = localStorage.getItem('ti-lang');
+      if (!pick) {
+        for (const l of navigator.languages || [navigator.language || '']) {
+          const c = String(l).toLowerCase().slice(0, 2);
+          if (langs.includes(c)) { pick = c; break; }
+          if (c === 'ru' || c === 'be') { pick = 'uk'; break; }
+        }
+        if (!pick) pick = 'en';
+      }
+      if (pick && pick !== 'uk' && langs.includes(pick)) location.replace('/' + pick + '/' + location.hash);
+    }
+  } catch (e) {}
+</script>
+<script>
+  // Тема застосовується до першого малювання, щоб не блимало. Лише світла або темна; за замовчуванням світла.
+  try { if (localStorage.getItem('ti-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
 </script>
 </head>
 <body>
@@ -28,10 +59,22 @@
     <a href="#benefits">Переваги</a>
     <a href="#faq">Питання</a>
   </nav>
+  <details class="lang" data-lang-menu>
+    <summary aria-label="Мова сайту"><svg data-icon="globe"></svg><span class="lang-code" data-lang-code>UA</span><svg class="lang-chev" data-icon="chevron-down"></svg></summary>
+    <ul class="lang-list">
+      <li><a href="/en/" hreflang="en" lang="en" data-lang="en">English</a></li>
+      <li><a href="/" hreflang="uk" lang="uk" data-lang="uk" aria-current="page">Українська</a></li>
+      <li><a href="/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+      <li><a href="/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+      <li><a href="/pl/" hreflang="pl" lang="pl" data-lang="pl">Polski</a></li>
+      <li><a href="/fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+      <li><a href="/it/" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+      <li><a href="/pt/" hreflang="pt" lang="pt-BR" data-lang="pt">Português</a></li>
+    </ul>
+  </details>
   <div class="theme" role="group" aria-label="Тема сайту">
-    <button type="button" data-set-theme="light" aria-label="Світла тема" aria-pressed="false"><svg data-icon="sun"></svg></button>
+    <button type="button" data-set-theme="light" aria-label="Світла тема" aria-pressed="true"><svg data-icon="sun"></svg></button>
     <button type="button" data-set-theme="dark" aria-label="Темна тема" aria-pressed="false"><svg data-icon="moon"></svg></button>
-    <button type="button" data-set-theme="system" aria-label="Як у системі" aria-pressed="true"><svg data-icon="monitor"></svg></button>
   </div>
 </header>
 
@@ -52,7 +95,7 @@
     <p class="hero-sign">— твій ThinkInk</p>
     <p class="hero-lead">ThinkInk слухає твій голос і вставляє в будь-яку програму Windows уже готовий текст: без «е-е», з правильними комами, діловим тоном або англійською — як скажеш.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="https://github.com/AndriyGusak/ThinkInk/releases/latest" data-download><svg data-icon="download"></svg>Завантажити для Windows</a>
+      <a class="btn btn-primary" href="https://github.com/AndriyGusak/ThinkInk/releases/latest" data-download data-goatcounter-click="zavantazhennia"><svg data-icon="download"></svg>Завантажити для Windows</a>
       <a class="btn" href="#scene">Подивитися, як це працює</a>
     </div>
 
@@ -485,7 +528,7 @@
   <div class="final-inner">
     <img src="assets/brand/thinkink-3d.png" alt="" width="160" height="160" class="final-logo">
     <h2 id="final-title"><span class="hand">Думай уголос.</span> ThinkInk напише.</h2>
-    <a class="btn btn-primary" href="https://github.com/AndriyGusak/ThinkInk/releases/latest" data-download><svg data-icon="download"></svg>Завантажити для Windows</a>
+    <a class="btn btn-primary" href="https://github.com/AndriyGusak/ThinkInk/releases/latest" data-download data-goatcounter-click="zavantazhennia-final"><svg data-icon="download"></svg>Завантажити для Windows</a>
   </div>
 </section>
 
