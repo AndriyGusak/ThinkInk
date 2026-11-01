@@ -443,8 +443,21 @@ section[id]{scroll-margin-top:72px}
 .faq-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:32px}
 .faq-term{display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:18px;background:var(--card);border:1px solid var(--edge);color:var(--muted);font-size:16px}
 .faq-term b{color:var(--ink)}
-.faq-q{margin-top:64px}
-.faq-q>h3{display:flex;align-items:center;gap:14px;font-size:26px}
+/* Часті питання згорнуті: рядок-заголовок зі стрілкою, клік розгортає (01.11) */
+:root{interpolate-size:allow-keywords}
+.faq-q{margin-top:16px;scroll-margin-top:80px}
+.faq-q:first-of-type{margin-top:32px}
+.faq-q>summary{display:flex;align-items:center;gap:16px;padding:14px 20px 14px 16px;border-radius:18px;background:var(--card);border:1px solid var(--edge);cursor:pointer;list-style:none;transition:background-color .16s ease,box-shadow .16s ease}
+.faq-q>summary::-webkit-details-marker{display:none}
+.faq-q>summary:hover{background:var(--hover)}
+.faq-q>summary:active{box-shadow:inset 0 2px 6px #1d335522}
+.faq-q>summary:focus-visible{outline:var(--focus);outline-offset:3px;border-radius:18px}
+.faq-q h3{display:flex;align-items:center;gap:14px;flex:1;font-size:22px}
+.faq-chev{flex:none;width:22px;height:22px;color:var(--muted);transition:rotate .24s var(--ease)}
+.faq-q[open] .faq-chev{rotate:180deg}
+.faq-body{padding:8px 4px 40px}
+.faq-q::details-content{block-size:0;overflow:hidden;transition:block-size .24s var(--ease),content-visibility .24s allow-discrete}
+.faq-q[open]::details-content{block-size:auto}
 .faq-num{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;font-size:16px;font-weight:700;color:var(--ink);background:var(--ctrl),var(--base);border:1px solid var(--ctrl-edge);box-shadow:var(--ctrl-shadow)}
 .faq-q-lead{margin-top:10px;max-width:65ch;color:var(--muted)}
 .faq-cards{display:grid;gap:16px;margin-top:24px}
@@ -531,7 +544,8 @@ section[id]{scroll-margin-top:72px}
 }
 @media (max-width:760px){
   .faq-cards.cols-2,.faq-cards.cols-4,.faq-facts,.faq-terms{grid-template-columns:1fr}
-  .faq-q>h3{font-size:22px;align-items:flex-start}
+  .faq-q h3{font-size:19px;align-items:flex-start}
+  .faq-q>summary{padding:12px 14px 12px 12px}
   .route{flex-direction:column}
   .flow{grid-template-columns:1fr;justify-items:center}
   .flow-step{width:100%}

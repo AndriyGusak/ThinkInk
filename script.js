@@ -286,3 +286,15 @@ fetch('https://api.github.com/repos/AndriyGusak/ThinkInk/releases/latest')
     });
   })
   .catch(() => {});
+
+/* Часті питання: посилання #faq-… розгортає потрібне питання */
+function openFaqFromHash() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (!id) return;
+  const q = document.getElementById(id)?.closest('details.faq-q');
+  if (!q) return;
+  q.open = true;
+  requestAnimationFrame(() => q.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }));
+}
+addEventListener('hashchange', openFaqFromHash);
+openFaqFromHash();
