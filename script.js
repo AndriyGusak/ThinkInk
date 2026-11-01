@@ -272,3 +272,17 @@ const asList = document.getElementById('as-list');
 });
 paintIcons(asList);
 paintIcons(document.querySelector('.sizes'));
+
+/* Кнопка завантаження: інсталятор з останнього релізу; без відповіді GitHub — сторінка релізу */
+fetch('https://api.github.com/repos/AndriyGusak/ThinkInk/releases/latest')
+  .then(r => r.ok ? r.json() : null)
+  .then(rel => {
+    const exe = rel && (rel.assets || []).find(a => /-Setup\.exe$/i.test(a.name));
+    if (!exe) return;
+    const version = String(rel.tag_name || '').replace(/^v/, '');
+    document.querySelectorAll('a[data-download]').forEach(a => {
+      a.href = exe.browser_download_url;
+      if (version) a.title = `Інсталятор ThinkInk ${version} для Windows`;
+    });
+  })
+  .catch(() => {});
