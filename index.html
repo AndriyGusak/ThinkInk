@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="uk" data-theme="system">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThinkInk — думай уголос, я напишу, як треба</title>
+<meta name="description" content="ThinkInk для Windows: думаєш уголос, а в поле вводу потрапляє чистий текст — виправлений, діловий, перекладений або оформлений як лист.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/brand/thinkink-3d.png">
+<link rel="stylesheet" href="styles.css">
+<script>
+  // Тема застосовується до першого малювання, щоб не блимало.
+  try { const t = localStorage.getItem('ti-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Перейти до змісту</a>
+
+<header class="top" id="top">
+  <a class="brand" href="#hero" aria-label="ThinkInk, на початок">
+    <img src="assets/brand/thinkink-3d.png" alt="" width="28" height="28">
+    <span class="wordmark"><b>Think</b>Ink<sup>β</sup></span>
+  </a>
+  <nav class="nav" aria-label="Розділи">
+    <a href="#scene">Як це працює</a>
+    <a href="#modes">Режими</a>
+    <a href="#interface">Інтерфейс</a>
+    <a href="#benefits">Переваги</a>
+    <a href="#faq">Питання</a>
+  </nav>
+  <div class="theme" role="group" aria-label="Тема сайту">
+    <button type="button" data-set-theme="light" aria-label="Світла тема" aria-pressed="false"><svg data-icon="sun"></svg></button>
+    <button type="button" data-set-theme="dark" aria-label="Темна тема" aria-pressed="false"><svg data-icon="moon"></svg></button>
+    <button type="button" data-set-theme="system" aria-label="Як у системі" aria-pressed="true"><svg data-icon="monitor"></svg></button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ГОЛОВНИЙ ЕКРАН -->
+<section class="hero" id="hero" aria-labelledby="hero-title">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="hero-inner">
+    <div class="logo-stage" aria-hidden="true">
+      <img class="logo3d" src="assets/brand/thinkink-3d.png" alt="" width="1254" height="1254">
+      <span class="logo-glow"></span>
+    </div>
+    <h1 id="hero-title" class="hero-title">
+      <span class="spoken" aria-hidden="true">думай уголос</span>
+      <span class="typed">Думай уголос.<br>Я напишу, як&nbsp;треба.</span>
+    </h1>
+    <p class="hero-sign">— твій ThinkInk</p>
+    <p class="hero-lead">ThinkInk слухає твій голос і вставляє в будь-яку програму Windows уже готовий текст: без «е-е», з правильними комами, діловим тоном або англійською — як скажеш.</p>
+    <div class="hero-actions">
+      <span class="btn btn-primary is-soon" aria-disabled="true"><svg data-icon="mic"></svg>Завантаження скоро</span>
+      <a class="btn" href="#scene">Подивитися, як це працює</a>
+    </div>
+
+    <div class="widget-demo" aria-hidden="true">
+      <div class="widget" data-state="recording">
+        <span class="w-btn w-mode"><svg data-icon="sparkles"></svg><svg class="chev" data-icon="chevron-down"></svg></span>
+        <span class="w-center">
+          <span class="w-name">Виправлення</span>
+          <span class="w-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </span>
+        <span class="w-btn w-rec"><svg data-icon="arrow-up"></svg></span>
+      </div>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#scene" aria-label="Прокрутити далі"><span></span></a>
+</section>
+
+<!-- СЦЕНА: ГОЛОС → ТЕКСТ (прив’язана до прокрутки) -->
+<section class="scene" id="scene" aria-labelledby="scene-title">
+  <div class="scene-sticky">
+    <div class="scene-copy">
+      <h2 id="scene-title">Ти говориш як людина.<br>Текст виходить як після редактора.</h2>
+      <ol class="scene-steps">
+        <li data-step="0"><b>Натисни мікрофон у віджеті</b> або свою гарячу клавішу і говори у будь-якому полі: у пошті, месенджері, документі.</li>
+        <li data-step="1"><b>Запинки зникають.</b> «Е-е», повтори й «ні, стоп» прибираються, а зміст лишається твоїм.</li>
+        <li data-step="2"><b>Готовий текст</b> вставляється там, де стоїть курсор. Нічого не треба копіювати вручну.</li>
+      </ol>
+    </div>
+
+    <div class="scene-stage" aria-hidden="true">
+      <div class="app-window">
+        <div class="app-bar"><span>Новий лист — Олені</span><span class="win-ctl"><svg data-icon="minus"></svg><svg data-icon="x"></svg></span></div>
+        <div class="app-field">
+          <div class="speech" id="speech"></div>
+          <div class="result" id="result">Я надішлю тобі кошторис у п’ятницю. Треба ще перевірити цифри. Можливо, сума трохи зміниться.<span class="caret"></span></div>
+        </div>
+      </div>
+      <div class="widget scene-widget" data-state="recording">
+        <span class="w-btn w-mode"><svg data-icon="sparkles"></svg><svg class="chev" data-icon="chevron-down"></svg></span>
+        <span class="w-center">
+          <span class="w-name">Виправлення</span>
+          <span class="w-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </span>
+        <span class="w-btn w-rec"><svg data-icon="arrow-up"></svg></span>
+      </div>
+    </div>
+    <p class="sr-only">Приклад: продиктовано «Я, е-е, надішлю тобі кошторис завтра, ні, у п’ятницю. Треба ще, ще перевірити цифри. Можливо, сума трохи зміниться.» Результат: «Я надішлю тобі кошторис у п’ятницю. Треба ще перевірити цифри. Можливо, сума трохи зміниться.»</p>
+  </div>
+</section>
+
+<!-- РЕЖИМИ -->
+<section class="modes" id="modes" aria-labelledby="modes-title">
+  <div class="wrap">
+    <h2 id="modes-title">Одна думка — одинадцять способів її подати</h2>
+    <p class="section-lead">Кожен режим має свій колір, і кожному можна призначити гарячу клавішу. Обирай режим у віджеті, і та сама продиктована фраза стане листом, промптом чи перекладом.</p>
+
+    <div class="mode-orbit" role="tablist" aria-label="Режими ThinkInk" id="mode-list"></div>
+
+    <div class="mode-panel" id="mode-panel" role="tabpanel" aria-live="polite">
+      <div class="mp-head">
+        <span class="mp-icon"><svg data-icon="sparkles" id="mp-icon"></svg></span>
+        <div>
+          <h3 id="mp-name">Виправлення</h3>
+          <p id="mp-desc"></p>
+        </div>
+      </div>
+      <div class="mp-body">
+        <figure class="mp-col mp-said">
+          <figcaption>Твої слова</figcaption>
+          <p id="mp-said" class="hand"></p>
+        </figure>
+        <span class="mp-arrow" aria-hidden="true"></span>
+        <figure class="mp-col mp-got">
+          <figcaption id="mp-got-label">У полі з’явилося</figcaption>
+          <p id="mp-got"></p>
+        </figure>
+      </div>
+      <p class="fine">Приклади ілюструють, як працює режим. Справжній результат залежить від обраної моделі та твого мовлення.</p>
+    </div>
+  </div>
+</section>
+
+<!-- РЕДАГУВАННЯ ВИДІЛЕНОГО -->
+<section class="edit" id="edit" aria-labelledby="edit-title">
+  <div class="wrap edit-grid">
+    <div class="edit-copy">
+      <h2 id="edit-title">Виділи абзац. Скажи, що з ним зробити.</h2>
+      <p>«Формалізуй», «переклади англійською», «скороти, але збережи всі дати»: звичайною мовою, без запам’ятовування команд. ThinkInk переробить фрагмент і скопіює результат у буфер обміну. Ти вставляєш його через Ctrl&nbsp;+&nbsp;V туди, куди потрібно.</p>
+      <p>Буфер обміну працює в будь-якій програмі, тому результат не прив’язаний до вікна, де був текст. Його можна вставити на місце виділеного, в інший документ, лист чи чат. А команду можна сказати незалежно від того, яке вікно зараз відкрите.</p>
+    </div>
+    <div class="edit-stage" id="edit-stage" aria-hidden="true">
+      <div class="doc">
+        <p class="doc-line muted-line"></p>
+        <p class="doc-text"><span class="sel" id="edit-before">Я не встигаю глянути кошторис сьогодні. Давайте перенесемо обговорення на п’ятницю.</span><span class="sel-after" id="edit-after">Я не встигаю переглянути кошторис сьогодні. Пропоную перенести обговорення на п’ятницю.</span></p>
+        <p class="doc-line muted-line short"></p>
+      </div>
+      <div class="voice-bubble"><svg data-icon="mic"></svg><span class="hand">Формалізуй</span></div>
+      <div class="copied-toast"><svg data-icon="clipboard-check"></svg><span><b>Результат скопійовано</b>Встав через Ctrl&nbsp;+&nbsp;V</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ІНТЕРФЕЙС -->
+<section class="iface" id="interface" aria-labelledby="iface-title">
+  <div class="glass-field" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <h2 id="iface-title">Віджет, який не заважає працювати</h2>
+    <p class="section-lead">Скляна капсула лежить поверх вікон і пропускає кліки там, де вона прозора. Її можна перетягнути будь-куди, зменшити до тонкої смужки або розгорнути з підписом режиму.</p>
+
+    <div class="sizes" role="group" aria-label="Вигляд віджета у спокої">
+      <div class="size-switch">
+        <button type="button" data-size="mini" aria-pressed="false">Міні</button>
+        <button type="button" data-size="compact" aria-pressed="false">Компакт</button>
+        <button type="button" data-size="large" aria-pressed="true">Великий</button>
+        <button type="button" data-size="auto" aria-pressed="false">Авто</button>
+      </div>
+      <div class="size-stage" aria-hidden="true">
+        <div class="widget live-widget" data-size="large" data-state="idle" style="--w-accent:#4a91ee">
+          <span class="w-btn w-mode"><svg data-icon="audio-lines"></svg><svg class="chev" data-icon="chevron-down"></svg></span>
+          <span class="w-center"><span class="w-name">Голосове введення</span><span class="w-grip"><i></i><i></i><i></i><i></i><i></i></span></span>
+          <span class="w-btn w-rec"><svg data-icon="mic"></svg></span>
+        </div>
+      </div>
+      <p class="size-note" id="size-note" aria-live="polite">Повний віджет: режим, назва й кнопка запису в одній капсулі.</p>
+    </div>
+
+    <div class="app-shot" aria-hidden="true">
+      <div class="as-title"><span class="wordmark"><b>Think</b>Ink<sup>β</sup></span><span class="win-ctl"><svg data-icon="minus"></svg><svg data-icon="x"></svg></span></div>
+      <div class="as-body">
+        <nav class="as-nav">
+          <small>Налаштування</small>
+          <span><svg data-icon="sliders-horizontal"></svg>Загальні</span>
+          <span><svg data-icon="gamepad-2"></svg>Віджет</span>
+          <span class="on"><svg data-icon="sparkles"></svg>Режими</span>
+          <span><svg data-icon="history"></svg>Історія</span>
+          <span><svg data-icon="chart-column"></svg>Статистика</span>
+          <span><svg data-icon="book-open"></svg>Навчання</span>
+          <span><svg data-icon="cpu"></svg>Обробка</span>
+          <span><svg data-icon="key-round"></svg>Ключі API</span>
+        </nav>
+        <div class="as-main">
+          <h3>Режими роботи з текстом</h3>
+          <p>Обери режими для віджета та налаштуй їхні гарячі клавіші.</p>
+          <div class="as-list" id="as-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="icon-glass" id="icon-glass" aria-hidden="true"></div>
+
+    <ul class="details">
+      <li><svg data-icon="layers"></svg><div><b>Дві теми — Crystal і Graphite</b>Світла, темна або за системою. Окремо налаштовуються скло віджета та меню.</div></li>
+      <li><svg data-icon="clipboard-check"></svg><div><b>«Результат скопійовано»</b>Після редагування текст уже в буфері обміну, а невелика картка підкаже: Ctrl&nbsp;+&nbsp;V.</div></li>
+      <li><svg data-icon="history"></svg><div><b>Історія з поверненням</b>Пошук, фільтр за режимами і повернення десяти останніх видалень.</div></li>
+      <li><svg data-icon="chart-column"></svg><div><b>Статистика й витрати</b>Скільки слів продиктовано за 7, 30, 365 днів, і календар витрат за кожним сервісом.</div></li>
+      <li><svg data-icon="cpu"></svg><div><b>Обробка без складних налаштувань</b>Обираєш, хто розпізнає голос і хто працює з текстом. Чого бракує, видно одразу, а коротка інструкція з&nbsp;семи кроків підкаже, що робити.</div></li>
+      <li><svg data-icon="eye"></svg><div><b>Навчання на справжньому віджеті</b>Вбудований тест проводить через диктування, переклад і редагування крок за кроком.</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ПРИВАТНІСТЬ -->
+<section class="privacy" id="privacy" aria-labelledby="privacy-title">
+  <div class="wrap privacy-grid">
+    <h2 id="privacy-title">Записи голосу не&nbsp;займають місця на&nbsp;диску</h2>
+    <div class="facts">
+      <p><svg data-icon="cpu"></svg><span><b>Аудіо живе лише в пам’яті</b> поки йде обробка, і не зберігається як запис.</span></p>
+      <p><svg data-icon="hard-drive"></svg><span><b>Історія й налаштування — у твоєму профілі Windows.</b> Окремого сервера з твоїми текстами немає.</span></p>
+      <p><svg data-icon="key-round"></svg><span><b>Ключі API зашифровані</b> засобами Windows і ніколи не показуються в інтерфейсі.</span></p>
+      <p><svg data-icon="wifi-off"></svg><span><b>Розпізнавання може працювати без інтернету.</b> Whisper працює на твоєму комп’ютері, з відеокартою NVIDIA або без неї. Модель можна обрати: від швидкої Small до точної Large&nbsp;v3.</span></p>
+    </div>
+    <p class="fine">Якщо для голосу обрано OpenAI або Gemini, аудіо надсилається туди. Для роботи з текстом (режими, переклад, редагування) ThinkInk надсилає текст лише тому сервісу, який обрано: OpenAI, Claude або Gemini. Безкоштовний ключ Gemini має свої умови: Google може використовувати надіслані тексти для покращення сервісу.</p>
+  </div>
+</section>
+
+<!-- ПЕРЕВАГИ -->
+<section class="benefits" id="benefits" aria-labelledby="benefits-title">
+  <div class="wrap">
+    <h2 id="benefits-title">Що ти отримуєш</h2>
+    <p class="section-lead">Головні можливості ThinkInk і те, що кожна з них дає тобі.</p>
+    <div class="table-scroll benefits-table">
+      <table>
+        <thead><tr><th scope="col">Перевага</th><th scope="col">Що це дає</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><svg data-icon="gift"></svg>Безкоштовна програма</th><td>Сам ThinkInk нічого не коштує. Обробка тексту йде через твою підписку або твій ключ API — платиш лише самому сервісу, якщо він платний.</td></tr>
+          <tr><th scope="row"><svg data-icon="plug"></svg>ШІ на твій вибір</th><td>Для тексту — OpenAI, Claude або Gemini: через акаунт (ChatGPT, Claude Code) або через ключ API. Для голосу — Whisper на комп’ютері, OpenAI або Gemini. Усі ключі додаються в одному місці, і ThinkInk сам розпізнає, чий це ключ.</td></tr>
+          <tr><th scope="row"><svg data-icon="wifi-off"></svg>Розпізнавання на твоєму комп’ютері</th><td>Whisper перетворює голос на текст без інтернету — з відеокартою NVIDIA або без неї.</td></tr>
+          <tr><th scope="row"><svg data-icon="sparkles"></svg>11 готових режимів</th><td>Виправлення, діловий і дружній тон, лист, промпт, «без води» та інші.</td></tr>
+          <tr><th scope="row"><svg data-icon="wand-sparkles"></svg>Редагування голосом</th><td>Виділи готовий текст і скажи, що з ним зробити: «формалізуй», «скороти, але збережи дати». Результат одразу в буфері обміну, тож вставити його можна куди завгодно.</td></tr>
+          <tr><th scope="row"><svg data-icon="languages"></svg>Переклад під час диктування</th><td>Говориш однією мовою — у полі з’являється текст іншою.</td></tr>
+          <tr><th scope="row"><svg data-icon="text-cursor-input"></svg>Будь-яка програма Windows</th><td>Текст вставляється там, де стоїть курсор: у пошті, месенджері, документі. Нічого не треба копіювати.</td></tr>
+          <tr><th scope="row"><svg data-icon="shield-check"></svg>Голос не зберігається</th><td>Аудіо живе лише в пам’яті, історія — у твоєму профілі Windows, ключі API зашифровані.</td></tr>
+          <tr><th scope="row"><svg data-icon="messages-square"></svg>Українською з першого дня</th><td>Режими й приклади створені українською, а не перекладені. Інтерфейс є також англійською, німецькою, польською, іспанською, французькою й&nbsp;португальською.</td></tr>
+          <tr><th scope="row"><svg data-icon="history"></svg>Історія й статистика</th><td>Пошук, повернення видаленого, скільки слів продиктовано і скільки коштувала обробка.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ЧЕСНО ПРО МЕЖІ -->
+<section class="limits" id="limits" aria-labelledby="limits-title">
+  <div class="wrap limits-grid">
+    <h2 id="limits-title">Що варто знати заздалегідь</h2>
+    <ul>
+      <li>Це тестова версія β — лише для Windows x64.</li>
+      <li>Програма поки безкоштовна. Підписка чи оплата ключа API — окремо, у&nbsp;самого сервісу.</li>
+      <li>Claude за підпискою працює через встановлений у тебе Claude Code і відповідає повільніше, ніж через ключ Anthropic. Gemini підключається лише ключем API.</li>
+      <li>Точні витрати OpenAI й Anthropic видно з&nbsp;адміністративним ключем. Для Gemini і&nbsp;без такого ключа ThinkInk показує оцінку.</li>
+      <li>Миттєве диктування працює з&nbsp;Whisper або OpenAI, з&nbsp;Gemini&nbsp;— ні.</li>
+      <li>Деякі програми з підвищеними правами не приймають автоматичну вставку — тоді текст можна скопіювати з історії.</li>
+      <li>Один запис — до 15 хвилин.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ЧАСТІ ПИТАННЯ -->
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <h2 id="faq-title">Часті питання</h2>
+    <p class="section-lead">Як налаштувати, скільки коштує і&nbsp;який потрібен комп’ютер.</p>
+
+    <!-- 1 -->
+    <article class="faq-q" aria-labelledby="faq-q0">
+      <h3 id="faq-q0"><span class="faq-num">1</span>Як працює ThinkInk?</h3>
+      <p class="faq-q-lead">У&nbsp;два кроки. Для кожного кроку обираєш свій сервіс.</p>
+      <div class="flow" aria-label="Голос, потім транскрипція, потім готовий текст">
+        <div class="flow-step"><span class="gi" style="--c:#4a91ee"><svg data-icon="mic"></svg></span><span class="flow-text"><small>Крок 1</small><b>Голос → транскрипція</b><span>Записує сказане слово в&nbsp;слово</span></span></div>
+        <svg class="flow-arrow" data-icon="arrow-right"></svg>
+        <div class="flow-step"><span class="gi" style="--c:#90bf6b"><svg data-icon="sparkles"></svg></span><span class="flow-text"><small>Крок 2</small><b>Транскрипція → готовий текст</b><span>Прибирає повтори, запинки, слова-паразити тощо</span></span></div>
+      </div>
+
+      <h4 class="faq-sub">Чим можна підключити кожен крок</h4>
+      <div class="faq-cards cols-3">
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#90bf6b"><svg data-icon="audio-lines"></svg></span><b>Whisper</b></div>
+          <p>Безкоштовне розпізнавання голосу прямо на твоєму комп’ютері, без інтернету. ThinkInk завантажує його сам.</p>
+          <ul class="fits">
+            <li class="yes"><svg data-icon="check"></svg>Голос → транскрипція</li>
+            <li class="no"><svg data-icon="x"></svg>Транскрипція → готовий текст</li>
+          </ul>
+        </div>
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#4a91ee"><svg data-icon="key-round"></svg></span><b>Ключ API</b></div>
+          <p>Як пароль до сервісу ШІ: OpenAI, Anthropic (Claude) чи Gemini. Створюється на сайті сервісу за кілька хвилин. Нижче позначено так: <span class="kb"><svg data-icon="key-round"></svg>API</span></p>
+          <ul class="fits">
+            <li class="yes"><svg data-icon="check"></svg>Голос → транскрипція <em>(OpenAI, Gemini)</em></li>
+            <li class="yes"><svg data-icon="check"></svg>Транскрипція → готовий текст</li>
+          </ul>
+        </div>
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#ac86e9"><svg data-icon="user-round-check"></svg></span><b>Підписка</b></div>
+          <p>Твій платний акаунт ChatGPT або Claude. Просто входиш у&nbsp;нього, без ключа. Нижче позначено так: <span class="kb"><svg data-icon="user-round-check"></svg>акаунт</span></p>
+          <ul class="fits">
+            <li class="no"><svg data-icon="x"></svg>Голос → транскрипція</li>
+            <li class="yes"><svg data-icon="check"></svg>Транскрипція → готовий текст</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- 1 -->
+    <article class="faq-q" aria-labelledby="faq-q1">
+      <h3 id="faq-q1"><span class="faq-num">2</span>Що обрати?</h3>
+
+      <div class="faq-card faq-pick">
+        <div class="fc-head"><span class="gi" style="--c:#4a91ee"><svg data-icon="badge-check"></svg></span><b>Наша порада<small>Точно, швидко й недорого</small></b></div>
+        <div class="route">
+          <div class="route-step"><small><svg data-icon="mic"></svg>Голос → транскрипція</small><span class="opts"><span class="opt">Whisper <em>з&nbsp;відеокартою NVIDIA</em></span><span class="or">або</span><span class="opt">OpenAI <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></div>
+          <svg class="route-arrow" data-icon="arrow-right"></svg>
+          <div class="route-step"><small><svg data-icon="sparkles"></svg>Транскрипція → готовий текст</small><span class="opts"><span class="opt">OpenAI GPT-6.1 Terra <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span><span class="or">або</span><span class="opt">Claude Sonnet&nbsp;5.5 <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></div>
+        </div>
+        <p class="fc-note">Чому саме так: у&nbsp;наших тестах GPT-6.1 Terra точно виконала всі режими й&nbsp;жодного разу не відповіла на запитання замість того, щоб його записати. Claude Sonnet&nbsp;5.5 теж добре себе показала. Ціна обробки — ≈&nbsp;0,002–0,004&nbsp;$ за фразу.</p>
+      </div>
+
+      <div class="faq-cards cols-4">
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#ac86e9"><svg data-icon="target"></svg></span><b>Найточніше</b></div>
+          <dl class="mini-route">
+            <div><dt><svg data-icon="mic"></svg>Голос → транскрипція</dt><dd><span class="opts"><span class="opt">Whisper Large&nbsp;v3</span><span class="or">або</span><span class="opt">OpenAI <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
+            <div><dt><svg data-icon="sparkles"></svg>Транскрипція → текст</dt><dd><span class="opts"><span class="opt">Claude Opus&nbsp;5.5 <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span><span class="or">або</span><span class="opt">OpenAI GPT-6.1 Sol <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
+          </dl>
+          <p class="fc-price">≈ 0,004–0,007&nbsp;$ <small>за фразу</small></p>
+          <p class="fc-note">≈ 150–300 фраз на 1&nbsp;$. Добре працює й&nbsp;будь-яка інша сильна модель з&nbsp;ключем.</p>
+        </div>
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#e8a12f"><svg data-icon="gauge"></svg></span><b>Найшвидше</b></div>
+          <dl class="mini-route">
+            <div><dt><svg data-icon="mic"></svg>Голос → транскрипція</dt><dd><span class="opts"><span class="opt">Whisper <em>з&nbsp;NVIDIA</em></span><span class="or">або</span><span class="opt">OpenAI <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
+            <div><dt><svg data-icon="sparkles"></svg>Транскрипція → текст</dt><dd><span class="opts"><span class="opt">Будь-яка модель <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
+          </dl>
+          <div class="speed" aria-label="Скільки чекати на текст після запису">
+            <div class="speed-row"><span>З&nbsp;ключем</span><i style="--w:12%"></i><b>≈ 1&nbsp;с</b></div>
+            <div class="speed-row"><span>Підписка ChatGPT</span><i style="--w:100%"></i><b>5–10&nbsp;с</b></div>
+          </div>
+        </div>
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#5b9cba"><svg data-icon="wallet"></svg></span><b>Найдешевше</b></div>
+          <dl class="mini-route">
+            <div><dt><svg data-icon="mic"></svg>Голос → транскрипція</dt><dd><span class="opts"><span class="opt">Whisper <em>на комп’ютері</em></span></span></dd></div>
+            <div><dt><svg data-icon="sparkles"></svg>Транскрипція → текст</dt><dd><span class="opts"><span class="opt">OpenAI GPT-6 Luna <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
+          </dl>
+          <p class="fc-price">≈ 0,0002&nbsp;$ <small>за фразу</small></p>
+          <p class="fc-note">≈ 5&nbsp;000 фраз на 1&nbsp;$</p>
+        </div>
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#90bf6b"><svg data-icon="gift"></svg></span><b>Безкоштовно</b></div>
+          <dl class="mini-route">
+            <div><dt><svg data-icon="mic"></svg>Голос → транскрипція</dt><dd><span class="opts"><span class="opt">Whisper <em>на комп’ютері</em></span><span class="or">або</span><span class="opt">Gemini <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span> <em>(безкоштовно)</em></span></span></dd></div>
+            <div><dt><svg data-icon="sparkles"></svg>Транскрипція → текст</dt><dd><span class="opts"><span class="opt">Gemini <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span> <em>(безкоштовно)</em></span></span></dd></div>
+          </dl>
+          <p class="fc-price">0&nbsp;$</p>
+          <p class="fc-note">Умови безкоштовного Gemini — у&nbsp;питанні 5.</p>
+        </div>
+      </div>
+      <p class="fine">Поради й&nbsp;швидкість — з&nbsp;наших тестів: понад 150 перевірок обробки тексту (однакові фрази в&nbsp;різних режимах і&nbsp;моделях). Ціни — оцінка за тарифами сервісів на 1&nbsp;листопада 2026 року.</p>
+    </article>
+
+    <!-- 2 -->
+    <article class="faq-q" aria-labelledby="faq-q2">
+      <h3 id="faq-q2"><span class="faq-num">3</span>Скільки це коштує?</h3>
+      <p class="faq-q-lead">Сам ThinkInk безкоштовний. Платиш лише сервісу ШІ, і&nbsp;то не завжди.</p>
+      <div class="faq-cards cols-3">
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#90bf6b"><svg data-icon="gift"></svg></span><b>Безкоштовно</b></div>
+          <p class="fc-price">0&nbsp;¢</p>
+          <dl class="mini-route">
+            <div><dt><svg data-icon="mic"></svg>Голос → транскрипція</dt><dd><span class="opts"><span class="opt">Whisper <em>на комп’ютері</em></span><span class="or">або</span><span class="opt">Gemini <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span> <em>(безкоштовно)</em></span></span></dd></div>
+            <div><dt><svg data-icon="sparkles"></svg>Транскрипція → текст</dt><dd><span class="opts"><span class="opt">Gemini <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span> <em>(безкоштовно)</em></span></span></dd></div>
+          </dl>
+          <p class="fc-note">Тільки диктування без обробки? Досить Whisper, ключ не потрібен.</p>
+        </div>
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#ac86e9"><svg data-icon="user-round-check"></svg></span><b>Вже є підписка</b></div>
+          <p class="fc-price">Без доплат</p>
+          <dl class="mini-route">
+            <div><dt><svg data-icon="mic"></svg>Голос → транскрипція</dt><dd><span class="opts"><span class="opt">Whisper <em>на комп’ютері</em></span></span></dd></div>
+            <div><dt><svg data-icon="sparkles"></svg>Транскрипція → текст</dt><dd><span class="opts"><span class="opt">ChatGPT <span class="kb" title="вхід в акаунт" aria-label="вхід в акаунт"><svg data-icon="user-round-check"></svg>акаунт</span></span><span class="or">або</span><span class="opt">Claude Code <span class="kb" title="вхід в акаунт" aria-label="вхід в акаунт"><svg data-icon="user-round-check"></svg>акаунт</span></span></span></dd></div>
+          </dl>
+          <p class="fc-note">У&nbsp;межах лімітів твого тарифу. Для Claude потрібна програма Claude Code.</p>
+        </div>
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#4a91ee"><svg data-icon="credit-card"></svg></span><b>Платний ключ</b></div>
+          <p class="fc-price">&lt;&nbsp;1&nbsp;¢ <small>за фразу</small></p>
+          <dl class="mini-route">
+            <div><dt><svg data-icon="mic"></svg>Голос → транскрипція</dt><dd><span class="opts"><span class="opt">Whisper <em>на комп’ютері</em></span><span class="or">або</span><span class="opt">OpenAI <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
+            <div><dt><svg data-icon="sparkles"></svg>Транскрипція → текст</dt><dd><span class="opts"><span class="opt">OpenAI <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span><span class="or">або</span><span class="opt">Claude <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span><span class="or">або</span><span class="opt">Gemini <span class="kb" title="з ключем API" aria-label="з ключем API"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
+          </dl>
+          <p class="fc-note">Платиш лише за&nbsp;те, що використав. Голос через OpenAI — до 0,6&nbsp;¢ за хвилину. Витрати видно в&nbsp;розділі «Витрати».</p>
+        </div>
+      </div>
+      <p class="fine">Ціни — оцінка за тарифами сервісів на 1&nbsp;листопада 2026 року.</p>
+    </article>
+
+    <!-- 4: чому безкоштовно -->
+    <article class="faq-q" aria-labelledby="faq-qfree">
+      <h3 id="faq-qfree"><span class="faq-num">4</span>Чому ThinkInk безкоштовний?</h3>
+      <div class="faq-card faq-story">
+        <div class="fc-head"><span class="gi" style="--c:#ac86e9"><svg data-icon="heart"></svg></span><b>Зроблено однією людиною</b></div>
+        <p>ThinkInk я створив для себе, своєї родини й&nbsp;друзів. Кожну деталь доводив до ладу й&nbsp;перевіряв у&nbsp;всіх можливих варіантах роботи. Як на мене, програма вийшла зручною, тож я хочу поділитися нею з&nbsp;усіма. Буду радий, якщо вона допоможе тобі в&nbsp;щоденній роботі чи спілкуванні.</p>
+        <p>Якщо ThinkInk тобі подобається, буду вдячний за відгук. А&nbsp;якщо маєш змогу&nbsp;— і&nbsp;за підтримку.</p>
+        <ul class="fits">
+          <li class="yes"><svg data-icon="check"></svg>Зараз програма повністю безкоштовна</li>
+          <li class="yes"><svg data-icon="message-square-heart"></svg>Відгуки й&nbsp;підтримка допомагають робити її кращою</li>
+          <li><svg data-icon="info"></svg>Згодом можуть з’явитися платні режими чи функції</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="faq-q" aria-labelledby="faq-q3">
+      <h3 id="faq-q3"><span class="faq-num">5</span>Як користуватися Gemini безкоштовно?</h3>
+      <p class="faq-q-lead">Потрібен лише безкоштовний ключ Gemini. Підписка Google&nbsp;AI не підійде: Google не дозволяє її в&nbsp;інших програмах.</p>
+      <ol class="faq-steps">
+        <li><span class="gi" style="--c:#4a91ee"><svg data-icon="globe"></svg></span><span><small>Крок 1</small>Відкрий <a href="https://aistudio.google.com/api-keys" rel="noopener" target="_blank">Google AI Studio</a> і&nbsp;увійди з&nbsp;акаунтом Google.</span></li>
+        <li><span class="gi" style="--c:#4a91ee"><svg data-icon="key-round"></svg></span><span><small>Крок 2</small>Створи ключ. Оплату не вмикай.</span></li>
+        <li><span class="gi" style="--c:#4a91ee"><svg data-icon="clipboard-paste"></svg></span><span><small>Крок 3</small>Встав ключ у&nbsp;ThinkInk у&nbsp;розділі «Ключі API».</span></li>
+      </ol>
+      <h4 class="faq-sub">Що варто знати про безкоштовний Gemini</h4>
+      <ul class="faq-facts">
+        <li><svg data-icon="eye"></svg><span>Google може використовувати твої тексти, і&nbsp;їх можуть читати люди.</span></li>
+        <li><svg data-icon="globe"></svg><span>У&nbsp;ЄС, Великій Британії та Швейцарії потрібна платна версія.</span></li>
+        <li><svg data-icon="timer"></svg><span>Є&nbsp;ліміт запитів на день.</span></li>
+        <li><svg data-icon="zap-off"></svg><span>Миттєве диктування з&nbsp;Gemini не працює.</span></li>
+      </ul>
+    </article>
+
+    <!-- 4 -->
+    <article class="faq-q" aria-labelledby="faq-q4">
+      <h3 id="faq-q4"><span class="faq-num">6</span>Який потрібен комп’ютер?</h3>
+      <div class="faq-cards cols-2">
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#90bf6b"><svg data-icon="laptop"></svg></span><b>Whisper на комп’ютері<small>Розпізнає голос без інтернету</small></b></div>
+          <dl class="specs">
+            <div><dt><svg data-icon="monitor"></svg>Система</dt><dd>Windows 64-біт</dd></div>
+            <div><dt><svg data-icon="cpu"></svg>Відеокарта</dt><dd>З&nbsp;NVIDIA найшвидше. Без неї теж працює, але повільніше.</dd></div>
+            <div><dt><svg data-icon="memory-stick"></svg>Пам’ять</dt><dd>Від 1&nbsp;ГБ вільної (Small) до 4,7&nbsp;ГБ (Large&nbsp;v3)</dd></div>
+            <div><dt><svg data-icon="hard-drive"></svg>Місце</dt><dd>Від 0,5 до 3,1&nbsp;ГБ — залежно від моделі</dd></div>
+            <div><dt><svg data-icon="wifi"></svg>Інтернет</dt><dd>Лише щоб завантажити модель</dd></div>
+          </dl>
+          <div class="models" aria-label="Моделі Whisper і місце на диску">
+            <span><b>Small</b>0,5&nbsp;ГБ</span><span><b>Medium</b>1,5&nbsp;ГБ</span><span><b>Large&nbsp;v3 Turbo</b>1,6&nbsp;ГБ</span><span><b>Large&nbsp;v3</b>3,1&nbsp;ГБ</span>
+          </div>
+          <div class="models-scale" aria-hidden="true"><span>швидше</span><span>точніше</span></div>
+        </div>
+        <div class="faq-card">
+          <div class="fc-head"><span class="gi" style="--c:#4a91ee"><svg data-icon="cloud"></svg></span><b>Через інтернет (API)<small>Голос і&nbsp;текст обробляє сервіс ШІ</small></b></div>
+          <dl class="specs">
+            <div><dt><svg data-icon="monitor"></svg>Система</dt><dd>Windows 64-біт</dd></div>
+            <div><dt><svg data-icon="cpu"></svg>Відеокарта</dt><dd>Не потрібна</dd></div>
+            <div><dt><svg data-icon="memory-stick"></svg>Пам’ять</dt><dd>Для моделі не потрібна</dd></div>
+            <div><dt><svg data-icon="hard-drive"></svg>Місце</dt><dd>Модель не потрібна</dd></div>
+            <div><dt><svg data-icon="wifi"></svg>Інтернет</dt><dd>Потрібен постійно</dd></div>
+          </dl>
+                  </div>
+      </div>
+      <p class="fine">Дані про пам’ять — приблизні, від розробників Whisper для комп’ютера (whisper.cpp).</p>
+    </article>
+  </div>
+</section>
+
+<!-- ФІНАЛ -->
+<section class="final" id="final" aria-labelledby="final-title">
+  <div class="final-inner">
+    <img src="assets/brand/thinkink-3d.png" alt="" width="160" height="160" class="final-logo">
+    <h2 id="final-title"><span class="hand">Думай уголос.</span> ThinkInk напише.</h2>
+    <span class="btn btn-primary is-soon" aria-disabled="true"><svg data-icon="mic"></svg>Завантаження скоро</span>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <span class="wordmark"><b>Think</b>Ink<sup>β</sup></span>
+  <span>Для Windows. Іконки — <a href="assets/Lucide.txt">Lucide (ISC)</a>, шрифти Noto Sans і Caveat — <a href="assets/fonts/NotoSans-OFL.txt">OFL</a>.</span>
+</footer>
+
+<script src="icons.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
