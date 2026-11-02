@@ -602,3 +602,9 @@ section[id]{scroll-margin-top:72px}
 .doc-line{display:flex;flex-wrap:wrap;gap:7px;height:10px;margin:6px 0;overflow:hidden;background:none;border-radius:0}
 .doc-line i{flex:none;width:calc(var(--w) * 1px);height:10px;border-radius:5px;background:var(--rule)}
 .doc-line.short{width:auto}
+/* Значки режимів — під вікном налаштувань, в один ряд */
+@media (min-width:900px) and (min-height:640px){
+  .iface .screen .icon-glass{margin-top:32px;gap:14px;max-width:none}
+  .iface .screen .icon-glass .gi{width:56px;height:56px;border-radius:16px;transform:none}
+  .iface .screen .details{margin-top:0}
+}
