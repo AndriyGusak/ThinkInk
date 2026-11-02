@@ -608,3 +608,28 @@ section[id]{scroll-margin-top:72px}
   .iface .screen .icon-glass .gi{width:56px;height:56px;border-radius:16px;transform:none}
   .iface .screen .details{margin-top:0}
 }
+/* Екран «Налаштування»: текст і значки ліворуч, вікно праворуч; «Що ще є»: картки (02.11) */
+@media (min-width:900px) and (min-height:640px){
+  .iface .screen.split{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:center;align-content:center}
+  .split-copy h2{font-size:clamp(30px,3.4vw,44px)}
+  .iface .screen.split .app-shot{margin:0;max-width:none}
+  .iface .screen .icon-glass{justify-content:flex-start;margin:34px 0 0;gap:12px;max-width:380px}
+  .iface .screen .icon-glass .gi{width:52px;height:52px;border-radius:15px;transform:none}
+  .iface .screen .details{margin-top:44px;gap:16px}
+  .iface .screen .details li{padding:20px 22px;border-radius:var(--radius-card);background:var(--card);border:1px solid var(--rule);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+}
+@media (min-width:900px) and (min-height:640px){
+  .iface .screen.split{grid-template-columns:1fr}
+  .iface .screen.split .app-shot{max-width:960px;margin:40px auto 0}
+}
+@media (min-width:1200px) and (min-height:640px){
+  .iface .screen.split{grid-template-columns:300px minmax(0,1fr);gap:44px}
+  .iface .screen.split .app-shot{width:960px;zoom:.85;margin:0;justify-self:end}
+}
+@media (min-width:1200px) and (min-height:640px){
+  .iface .screen.split{grid-template-columns:340px minmax(0,1fr);gap:40px}
+  .iface .screen.split .app-shot{zoom:.8}
+  .split-copy h2{font-size:38px}
+  .iface .screen .icon-glass{gap:10px;max-width:340px}
+  .iface .screen .icon-glass .gi{width:46px;height:46px;border-radius:14px}
+}
