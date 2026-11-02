@@ -636,3 +636,12 @@ section[id]{scroll-margin-top:72px}
 
 /* Підпис під кнопками з’являється після кнопок, а не раніше (02.11) */
 .dl-meta,.dl-warn{animation:typed 1.2s var(--ease) 2.4s both}
+/* 02.11 v3: великі «гойдалки» значків під вікном на всю ширину; «Що ще є» — 4×3 разом із приватністю */
+@media (min-width:900px) and (min-height:640px){
+  .iface .screen.split .icon-glass{grid-column:1/-1;justify-content:center;max-width:none;margin:36px 0 0;gap:18px}
+  .iface .screen.split .icon-glass .gi{width:76px;height:76px;border-radius:22px;transform:translateY(calc((var(--p,0) - .5) * var(--par,40px)))}
+  .iface .screen .details{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:36px}
+  .iface .screen .details li{padding:18px 18px;font-size:14px}
+  .iface .screen .details b{font-size:16px}
+}
+@media (min-width:900px) and (max-width:1199px){.iface .screen .details{grid-template-columns:repeat(2,minmax(0,1fr))}}

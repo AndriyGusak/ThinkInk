@@ -228,7 +228,6 @@
     <div class="split-copy">
       <h2>Усі налаштування в одному вікні</h2>
       <p class="section-lead">Кожен режим можна ввімкнути, вимкнути або призначити йому гарячу клавішу. Історія, статистика й ключі API — у сусідніх розділах.</p>
-      <div class="icon-glass" id="icon-glass" aria-hidden="true"></div>
     </div>
     <div class="app-shot" aria-hidden="true">
       <div class="as-title"><span class="wordmark"><b>Think</b>Ink<sup>β</sup></span><span class="win-ctl"><svg data-icon="minus"></svg><svg data-icon="x"></svg></span></div>
@@ -252,18 +251,22 @@
       </div>
     </div>
 
+    <div class="icon-glass" id="icon-glass" aria-hidden="true"></div>
     </div>
 
-    <div class="screen">
+    <div class="screen" id="privacy">
     <h2>Що ще є в ThinkInk</h2>
-    <p class="section-lead">Теми, історія, статистика, переклад та інше.</p>
+    <p class="section-lead">Приватність, робота без інтернету, теми, історія, статистика та інше.</p>
     <ul class="details">
-      <li><svg data-icon="layers"></svg><div><b>Дві теми — Crystal і Graphite</b>Світла, темна або за системою. Окремо налаштовуються скло віджета та меню.</div></li>
-      <li><svg data-icon="clipboard-check"></svg><div><b>«Результат скопійовано»</b>Після редагування текст уже в буфері обміну, а невелика картка підкаже: Ctrl&nbsp;+&nbsp;V.</div></li>
-      <li><svg data-icon="history"></svg><div><b>Історія з поверненням</b>Пошук, фільтр за режимами і повернення десяти останніх видалень.</div></li>
+      <li><svg data-icon="hard-drive"></svg><div><b>Дані лишаються в тебе</b>Голос не записується на диск, аудіо живе лише в пам’яті під час обробки. Історія й налаштування — у твоєму профілі Windows.</div></li>
+      <li><svg data-icon="wifi-off"></svg><div><b>З інтернетом і без</b>Whisper розпізнає голос на твоєму комп’ютері. Через інтернет дані йдуть лише в сервіси, які ти обрав. З&nbsp;безкоштовним ключем Gemini Google може використовувати тексти для покращення сервісу.</div></li>
+      <li><svg data-icon="key-round"></svg><div><b>Ключі API зашифровані</b>Засобами Windows. В&nbsp;інтерфейсі вони ніколи не показуються.</div></li>
       <li><svg data-icon="plug"></svg><div><b>ШІ на твій вибір</b>Текст — OpenAI, Claude або Gemini, через акаунт чи ключ. Голос — Whisper на комп’ютері, OpenAI або Gemini.</div></li>
       <li><svg data-icon="languages"></svg><div><b>Переклад під час диктування</b>Говориш однією мовою — у&nbsp;полі з’являється текст іншою.</div></li>
       <li><svg data-icon="messages-square"></svg><div><b>Українською з першого дня</b>Режими й приклади створені українською. Інтерфейс — ще шістьма мовами.</div></li>
+      <li><svg data-icon="clipboard-check"></svg><div><b>«Результат скопійовано»</b>Після редагування текст уже в буфері обміну, а невелика картка підкаже: Ctrl&nbsp;+&nbsp;V.</div></li>
+      <li><svg data-icon="history"></svg><div><b>Історія з поверненням</b>Пошук, фільтр за режимами і повернення десяти останніх видалень.</div></li>
+      <li><svg data-icon="layers"></svg><div><b>Дві теми — Crystal і Graphite</b>Світла, темна або за системою. Окремо налаштовуються скло віджета та меню.</div></li>
       <li><svg data-icon="chart-column"></svg><div><b>Статистика й витрати</b>Скільки слів продиктовано за 7, 30, 365 днів, і календар витрат за кожним сервісом.</div></li>
       <li><svg data-icon="cpu"></svg><div><b>Обробка без складних налаштувань</b>Обираєш, хто розпізнає голос і хто працює з текстом. Чого бракує, видно одразу, а коротка інструкція з&nbsp;семи кроків підкаже, що робити.</div></li>
       <li><svg data-icon="eye"></svg><div><b>Навчання на справжньому віджеті</b>Вбудований тест проводить через диктування, переклад і редагування крок за кроком.</div></li>
@@ -272,19 +275,7 @@
   </div>
 </section>
 
-<!-- ПРИВАТНІСТЬ -->
-<section class="privacy" id="privacy" aria-labelledby="privacy-title">
-  <div class="wrap privacy-grid">
-    <h2 id="privacy-title">Твої дані під&nbsp;твоїм контролем</h2>
-    <div class="facts">
-      <p><svg data-icon="cpu"></svg><span><b>Голос не записується на диск.</b> Аудіо живе лише в пам’яті, поки йде обробка.</span></p>
-      <p><svg data-icon="hard-drive"></svg><span><b>Історія й налаштування — у твоєму профілі Windows.</b> Окремого сервера з твоїми текстами немає.</span></p>
-      <p><svg data-icon="key-round"></svg><span><b>Ключі API зашифровані</b> засобами Windows і ніколи не показуються в інтерфейсі.</span></p>
-      <p><svg data-icon="wifi-off"></svg><span><b>Розпізнавання може працювати без інтернету.</b> Whisper працює на твоєму комп’ютері, з відеокартою NVIDIA або без неї. Модель можна обрати: від швидкої Small до точної Large&nbsp;v3.</span></p>
-      <p><svg data-icon="cloud"></svg><span><b>Через інтернет — лише туди, куди обрав.</b> Якщо для голосу обрано OpenAI чи Gemini, аудіо йде туди. Текст отримує лише сервіс, обраний для тексту: OpenAI, Claude або Gemini. З&nbsp;безкоштовним ключем Gemini Google може використовувати тексти для покращення сервісу.</span></p>
-    </div>
-  </div>
-</section>
+
 
 <!-- ЧАСТІ ПИТАННЯ -->
 <section class="faq" id="faq" aria-labelledby="faq-title">
