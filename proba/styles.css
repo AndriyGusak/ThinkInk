@@ -597,3 +597,8 @@ section[id]{scroll-margin-top:72px}
   .iface .screen>:first-child{margin-top:0}
   .final{min-height:calc(100svh - 95px);display:flex;align-items:center;justify-content:center;padding:96px 16px 48px}
 }
+
+/* Рядки довкола абзацу — імітація слів різної довжини (Андрій, 02.11) */
+.doc-line{display:flex;flex-wrap:wrap;gap:7px;height:10px;margin:6px 0;overflow:hidden;background:none;border-radius:0}
+.doc-line i{flex:none;width:calc(var(--w) * 1px);height:10px;border-radius:5px;background:var(--rule)}
+.doc-line.short{width:auto}
