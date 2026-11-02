@@ -71,7 +71,7 @@ const MODES = [
     said: t('Лист Олені. Попроси надіслати оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.'),
     got: t('Добрий день, Олено!\n\nБудь ласка, надішліть оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.\n\nЗ повагою,\n[Ваше ім’я]') },
   { id: 'selection', name: t('Редагування'), icon: 'text-cursor-input', color: '#6597c9', key: 'Ctrl + Alt + E',
-    desc: t('Переробляє виділений текст за голосовою командою і копіює результат у буфер обміну.'),
+    desc: t('Виділи текст у будь-якій програмі і скажи, що з ним зробити. Результат — у буфері обміну.'),
     said: t('«Скороти, але збережи всі дати»'),
     gotLabel: t('У буфері обміну'),
     got: t('Скорочений варіант із тими самими датами. Встав його через Ctrl\u00a0+\u00a0V там, де він потрібен.') }
@@ -114,6 +114,7 @@ function selectMode(i, byUser) {
   document.querySelectorAll('.chip').forEach((c, j) => { c.setAttribute('aria-selected', String(j === i)); c.tabIndex = j === i ? 0 : -1; });
   panel.setAttribute('aria-labelledby', 'tab-' + m.id);
   panel.style.setProperty('--c', m.color);
+  panel.classList.toggle('is-edit', m.id === 'selection');
   const icon = document.getElementById('mp-icon');
   icon.dataset.icon = m.icon; delete icon.dataset.painted;
   icon.parentElement.className = 'mp-icon gi';
@@ -285,6 +286,13 @@ fetch('https://api.github.com/repos/AndriyGusak/ThinkInk/releases/latest')
     const exe = rel && (rel.assets || []).find(a => /-Setup\.exe$/i.test(a.name));
     if (!exe) return;
     const version = String(rel.tag_name || '').replace(/^v/, '');
+    // Під кнопкою: версія й розмір інсталятора з останнього релізу
+    const meta = document.querySelector('.dl-rel');
+    if (meta && version && exe.size) {
+      meta.querySelector('[data-dl-v]').textContent = version;
+      meta.querySelector('[data-dl-mb]').textContent = Math.round(exe.size / 1048576);
+      meta.hidden = false;
+    }
     document.querySelectorAll('a[data-download]').forEach(a => {
       a.href = exe.browser_download_url;
       if (version) a.title = t('Інсталятор ThinkInk {v} для Windows').replace('{v}', version);
@@ -313,3 +321,12 @@ if (langMenu) {
     try { localStorage.setItem('ti-lang', a.dataset.lang); } catch (e) {}
   }));
 }
+
+/* Кнопка «Завантажити» в шапці — лише після головного екрана */
+(() => {
+  const top = document.getElementById('top'), hero = document.getElementById('hero');
+  if (!top || !hero) return;
+  const f = () => top.classList.toggle('show-dl', hero.getBoundingClientRect().bottom < 80);
+  addEventListener('scroll', f, { passive: true });
+  f();
+})();

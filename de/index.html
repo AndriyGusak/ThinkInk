@@ -6,7 +6,15 @@
 <title>ThinkInk — denk laut, ich schreibe es richtig</title>
 <meta name="description" content="ThinkInk für Windows: Du denkst laut, und im Eingabefeld landet sauberer Text — korrigiert, sachlich, übersetzt oder als E-Mail formatiert.">
 <meta name="color-scheme" content="light dark">
-<link rel="icon" href="../assets/brand/thinkink-3d.png">
+<link rel="icon" href="../assets/brand/thinkink-64.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ThinkInk">
+<meta property="og:title" content="ThinkInk — denk laut, ich schreibe es richtig">
+<meta property="og:description" content="ThinkInk für Windows: Du denkst laut, und im Eingabefeld landet sauberer Text — korrigiert, sachlich, übersetzt oder als E-Mail formatiert.">
+<meta property="og:image" content="http://thinkink.com.ua/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../styles.css">
 <!-- i18n:links — адреси мовних версій; оновлює build-langs.cjs -->
 <link rel="canonical" href="https://thinkink.com.ua/de/">
@@ -49,14 +57,14 @@
 
 <header class="top" id="top">
   <a class="brand" href="#hero" aria-label="ThinkInk, zum Anfang">
-    <img src="../assets/brand/thinkink-3d.png" alt="" width="28" height="28">
+    <img src="../assets/brand/thinkink-64.png" alt="" width="28" height="28">
     <span class="wordmark"><b>Think</b>Ink<sup>β</sup></span>
   </a>
   <nav class="nav" aria-label="Abschnitte">
     <a href="#scene">So geht’s</a>
     <a href="#modes">Modi</a>
     <a href="#interface">Oberfläche</a>
-    <a href="#benefits">Vorteile</a>
+    <a href="#privacy">Datenschutz</a>
     <a href="#faq">FAQ</a>
   </nav>
   <details class="lang" data-lang-menu>
@@ -76,6 +84,7 @@
     <button type="button" data-set-theme="light" aria-label="Helles Design" aria-pressed="true"><svg data-icon="sun"></svg></button>
     <button type="button" data-set-theme="dark" aria-label="Dunkles Design" aria-pressed="false"><svg data-icon="moon"></svg></button>
   </div>
+  <a class="btn btn-primary top-dl" href="https://github.com/AndriyGusak/ThinkInk/releases/latest" data-download data-goatcounter-click="zavantazhennia-shapka"><svg data-icon="download"></svg><span>Herunterladen</span></a>
 </header>
 
 <main id="main">
@@ -85,7 +94,7 @@
   <div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="hero-inner">
     <div class="logo-stage" aria-hidden="true">
-      <img class="logo3d" src="../assets/brand/thinkink-3d.png" alt="" width="1254" height="1254">
+      <img class="logo3d" src="../assets/brand/thinkink-512.png" alt="" width="512" height="512">
       <span class="logo-glow"></span>
     </div>
     <h1 id="hero-title" class="hero-title">
@@ -98,6 +107,15 @@
       <a class="btn btn-primary" href="https://github.com/AndriyGusak/ThinkInk/releases/latest" data-download data-goatcounter-click="zavantazhennia"><svg data-icon="download"></svg>Für Windows herunterladen</a>
       <a class="btn" href="#scene">So funktioniert es</a>
     </div>
+    <p class="dl-meta"><span class="dl-rel" hidden><span>Version</span> <span data-dl-v></span> · <span data-dl-mb></span>&nbsp;<span>MB</span> · </span><span>Windows 64-Bit</span> · <a href="https://github.com/AndriyGusak/ThinkInk/releases">Neuigkeiten</a></p>
+    <details class="dl-warn">
+      <summary><svg class="ic-tri" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Warum warnt Windows?</span></summary>
+      <div class="dl-pop">
+        <p><b>Windows zeigt eventuell „Unbekannter Herausgeber“ an.</b> Das passiert bei Programmen ohne kostenpflichtiges Entwicklerzertifikat. Ein solches Zertifikat kostet jedes Jahr viel Geld, und ThinkInk ist kostenlos, darum gibt es keins.</p>
+        <p><b>So installierst du es:</b> Klicke im Windows-Fenster auf „Weitere Informationen“ und dann auf „Trotzdem ausführen“.</p>
+        <p><b>Woher die Datei kommt:</b> Die Schaltfläche lädt das Installationsprogramm von der offiziellen ThinkInk-Seite auf GitHub.</p>
+      </div>
+    </details>
 
     <div class="widget-demo" aria-hidden="true">
       <div class="widget" data-state="recording">
@@ -173,27 +191,16 @@
           <p id="mp-got"></p>
         </figure>
       </div>
-      <p class="fine">Die Beispiele zeigen, wie ein Modus arbeitet. Das tatsächliche Ergebnis hängt vom gewählten Modell und deiner Sprechweise ab.</p>
-    </div>
-  </div>
-</section>
-
-<!-- РЕДАГУВАННЯ ВИДІЛЕНОГО -->
-<section class="edit" id="edit" aria-labelledby="edit-title">
-  <div class="wrap edit-grid">
-    <div class="edit-copy">
-      <h2 id="edit-title">Markiere einen Absatz. Sag, was damit passieren soll.</h2>
-      <p>„Mach es förmlicher“, „übersetze ins Englische“, „kürze es, aber behalte alle Daten“: in normaler Sprache, ohne Befehle auswendig zu lernen. ThinkInk überarbeitet den Abschnitt und kopiert das Ergebnis in die Zwischenablage. Du fügst es mit Ctrl&nbsp;+&nbsp;V ein, wo du es brauchst.</p>
-      <p>Die Zwischenablage funktioniert in jedem Programm, darum hängt das Ergebnis nicht am ursprünglichen Fenster. Du kannst es anstelle der Markierung, in ein anderes Dokument, eine E-Mail oder einen Chat einfügen. Und den Befehl sprichst du egal in welchem Fenster.</p>
-    </div>
-    <div class="edit-stage" id="edit-stage" aria-hidden="true">
-      <div class="doc">
-        <p class="doc-line muted-line"></p>
-        <p class="doc-text"><span class="sel" id="edit-before">Ich schaffe es heute nicht, mir den Kostenvoranschlag anzuschauen. Lass uns das auf Freitag schieben.</span><span class="sel-after" id="edit-after">Ich kann den Kostenvoranschlag heute leider nicht prüfen. Ich schlage vor, die Besprechung auf Freitag zu verschieben.</span></p>
-        <p class="doc-line muted-line short"></p>
+      <div class="edit-stage" id="edit-stage" aria-hidden="true">
+        <div class="doc">
+          <p class="doc-line muted-line"></p>
+          <p class="doc-text"><span class="sel" id="edit-before">Ich wollte nur sagen, dass ich es heute leider wirklich nicht schaffe, mir den Kostenvoranschlag ordentlich anzusehen, also, wenn es euch nichts ausmacht, verschieben wir die Besprechung vielleicht auf Freitag.</span><span class="sel-after" id="edit-after">Sorry, I won’t get to the estimate today. Can we discuss it on Friday?</span></p>
+          <p class="doc-line muted-line short"></p>
+        </div>
+        <div class="voice-bubble"><svg data-icon="mic"></svg><span class="hand">Kürze es und übersetze ins Englische</span></div>
+        <div class="copied-toast"><svg data-icon="clipboard-check"></svg><span><b>Ergebnis kopiert</b>Mit Ctrl&nbsp;+&nbsp;V einfügen</span></div>
       </div>
-      <div class="voice-bubble"><svg data-icon="mic"></svg><span class="hand">Mach es förmlicher</span></div>
-      <div class="copied-toast"><svg data-icon="clipboard-check"></svg><span><b>Ergebnis kopiert</b>Mit Ctrl&nbsp;+&nbsp;V einfügen</span></div>
+      <p class="fine">Die Beispiele zeigen, wie ein Modus arbeitet. Das tatsächliche Ergebnis hängt vom gewählten Modell und deiner Sprechweise ab.</p>
     </div>
   </div>
 </section>
@@ -250,6 +257,9 @@
       <li><svg data-icon="layers"></svg><div><b>Zwei Designs — Crystal und Graphite</b>Hell, dunkel oder wie im System. Das Glas von Widget und Menü stellst du separat ein.</div></li>
       <li><svg data-icon="clipboard-check"></svg><div><b>„Ergebnis kopiert“</b>Nach dem Bearbeiten liegt der Text schon in der Zwischenablage, und eine kleine Karte erinnert dich: Ctrl&nbsp;+&nbsp;V.</div></li>
       <li><svg data-icon="history"></svg><div><b>Verlauf mit Wiederherstellen</b>Suche, Filter nach Modus und Wiederherstellen der letzten zehn Löschungen.</div></li>
+      <li><svg data-icon="plug"></svg><div><b>KI nach deiner Wahl</b>Text: OpenAI, Claude oder Gemini, per Konto oder Schlüssel. Stimme: Whisper auf dem Computer, OpenAI oder Gemini.</div></li>
+      <li><svg data-icon="languages"></svg><div><b>Übersetzung beim Diktieren</b>Du sprichst eine Sprache — im Feld erscheint Text in einer anderen.</div></li>
+      <li><svg data-icon="messages-square"></svg><div><b>Sieben Sprachen</b>Die Oberfläche gibt es auf Deutsch, Englisch, Ukrainisch, Polnisch, Spanisch, Französisch und Portugiesisch.</div></li>
       <li><svg data-icon="chart-column"></svg><div><b>Statistik und Kosten</b>Wie viele Wörter du in 7, 30 und 365 Tagen diktiert hast, dazu ein Kostenkalender für jeden Dienst.</div></li>
       <li><svg data-icon="cpu"></svg><div><b>Verarbeitung ohne komplizierte Einstellungen</b>Du wählst, wer die Stimme erkennt und wer den Text bearbeitet. Was fehlt, siehst du sofort, und eine kurze Anleitung in sieben Schritten zeigt, was zu tun ist.</div></li>
       <li><svg data-icon="eye"></svg><div><b>Einführung am echten Widget</b>Ein eingebauter Test führt dich Schritt für Schritt durch Diktat, Übersetzung und Bearbeitung.</div></li>
@@ -260,55 +270,14 @@
 <!-- ПРИВАТНІСТЬ -->
 <section class="privacy" id="privacy" aria-labelledby="privacy-title">
   <div class="wrap privacy-grid">
-    <h2 id="privacy-title">Sprachaufnahmen belegen keinen Speicherplatz</h2>
+    <h2 id="privacy-title">Deine Daten, unter deiner Kontrolle</h2>
     <div class="facts">
-      <p><svg data-icon="cpu"></svg><span><b>Audio existiert nur im Arbeitsspeicher,</b> solange die Verarbeitung läuft, und wird nicht als Aufnahme gespeichert.</span></p>
+      <p><svg data-icon="cpu"></svg><span><b>Deine Stimme wird nie auf der Festplatte gespeichert.</b> Audio existiert nur im Arbeitsspeicher, solange die Verarbeitung läuft.</span></p>
       <p><svg data-icon="hard-drive"></svg><span><b>Verlauf und Einstellungen liegen in deinem Windows-Profil.</b> Es gibt keinen eigenen Server mit deinen Texten.</span></p>
       <p><svg data-icon="key-round"></svg><span><b>API-Schlüssel sind verschlüsselt</b> mit Windows-Mitteln und werden in der Oberfläche nie angezeigt.</span></p>
       <p><svg data-icon="wifi-off"></svg><span><b>Die Erkennung funktioniert auch ohne Internet.</b> Whisper läuft auf deinem Computer, mit oder ohne NVIDIA-Grafikkarte. Das Modell ist wählbar: vom schnellen Small bis zum genauen Large&nbsp;v3.</span></p>
+      <p><svg data-icon="cloud"></svg><span><b>Online nur dorthin, wo du es willst.</b> Wenn du OpenAI oder Gemini für die Stimme wählst, geht das Audio dorthin. Text bekommt nur der Dienst, den du für Text gewählt hast: OpenAI, Claude oder Gemini. Mit dem kostenlosen Gemini-Schlüssel kann Google die Texte zur Verbesserung des Dienstes nutzen.</span></p>
     </div>
-    <p class="fine">Wenn du OpenAI oder Gemini für die Stimme wählst, wird das Audio dorthin gesendet. Für die Textarbeit (Modi, Übersetzung, Bearbeitung) sendet ThinkInk den Text nur an den gewählten Dienst: OpenAI, Claude oder Gemini. Für den kostenlosen Gemini-Schlüssel gelten eigene Bedingungen: Google kann gesendete Texte zur Verbesserung des Dienstes nutzen.</p>
-  </div>
-</section>
-
-<!-- ПЕРЕВАГИ -->
-<section class="benefits" id="benefits" aria-labelledby="benefits-title">
-  <div class="wrap">
-    <h2 id="benefits-title">Was du bekommst</h2>
-    <p class="section-lead">Die wichtigsten Funktionen von ThinkInk und was jede dir bringt.</p>
-    <div class="table-scroll benefits-table">
-      <table>
-        <thead><tr><th scope="col">Funktion</th><th scope="col">Was es dir bringt</th></tr></thead>
-        <tbody>
-          <tr><th scope="row"><svg data-icon="gift"></svg>Kostenloses Programm</th><td>ThinkInk selbst kostet nichts. Die Textverarbeitung läuft über dein Abo oder deinen API-Schlüssel — du zahlst nur dem Dienst, falls er kostenpflichtig ist.</td></tr>
-          <tr><th scope="row"><svg data-icon="plug"></svg>KI nach deiner Wahl</th><td>Für Text — OpenAI, Claude oder Gemini: per Konto (ChatGPT, Claude Code) oder per API-Schlüssel. Für die Stimme — Whisper auf dem Computer, OpenAI oder Gemini. Alle Schlüssel kommen an eine Stelle, und ThinkInk erkennt selbst, zu welchem Dienst ein Schlüssel gehört.</td></tr>
-          <tr><th scope="row"><svg data-icon="wifi-off"></svg>Erkennung auf deinem Computer</th><td>Whisper wandelt Sprache ohne Internet in Text um — mit oder ohne NVIDIA-Grafikkarte.</td></tr>
-          <tr><th scope="row"><svg data-icon="sparkles"></svg>11 fertige Modi</th><td>Korrektur, sachlicher und freundlicher Ton, E-Mail, Prompt, „Kurzfassung“ und mehr.</td></tr>
-          <tr><th scope="row"><svg data-icon="wand-sparkles"></svg>Bearbeiten per Stimme</th><td>Markiere einen Text und sag, was damit passieren soll: „mach es förmlicher“, „kürze es, aber behalte die Daten“. Das Ergebnis liegt sofort in der Zwischenablage, du kannst es überall einfügen.</td></tr>
-          <tr><th scope="row"><svg data-icon="languages"></svg>Übersetzung beim Diktieren</th><td>Du sprichst eine Sprache — im Feld erscheint Text in einer anderen.</td></tr>
-          <tr><th scope="row"><svg data-icon="text-cursor-input"></svg>Jedes Windows-Programm</th><td>Der Text erscheint, wo der Cursor steht: in E-Mail, Messenger, Dokument. Nichts zu kopieren.</td></tr>
-          <tr><th scope="row"><svg data-icon="shield-check"></svg>Die Stimme wird nicht gespeichert</th><td>Audio existiert nur im Arbeitsspeicher, der Verlauf liegt in deinem Windows-Profil, API-Schlüssel sind verschlüsselt.</td></tr>
-          <tr><th scope="row"><svg data-icon="messages-square"></svg>Sieben Sprachen</th><td>Die Oberfläche gibt es auf Deutsch, Englisch, Ukrainisch, Polnisch, Spanisch, Französisch und Portugiesisch.</td></tr>
-          <tr><th scope="row"><svg data-icon="history"></svg>Verlauf und Statistik</th><td>Suche, Gelöschtes wiederherstellen, wie viele Wörter du diktiert hast und was die Verarbeitung gekostet hat.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ЧЕСНО ПРО МЕЖІ -->
-<section class="limits" id="limits" aria-labelledby="limits-title">
-  <div class="wrap limits-grid">
-    <h2 id="limits-title">Gut zu wissen</h2>
-    <ul>
-      <li>Dies ist eine Testversion (β) — nur für Windows x64.</li>
-      <li>Das Programm ist vorerst kostenlos. Abo oder API-Schlüssel bezahlst du separat beim Dienst selbst.</li>
-      <li>Claude per Abo läuft über dein installiertes Claude Code und antwortet langsamer als mit einem Anthropic-Schlüssel. Gemini wird nur per API-Schlüssel verbunden.</li>
-      <li>Genaue Kosten für OpenAI und Anthropic siehst du mit einem Admin-Schlüssel. Für Gemini und ohne diesen Schlüssel zeigt ThinkInk eine Schätzung.</li>
-      <li>Sofortdiktat funktioniert mit Whisper oder OpenAI, nicht mit Gemini.</li>
-      <li>Manche Programme mit erhöhten Rechten nehmen kein automatisches Einfügen an — dann kopierst du den Text aus dem Verlauf.</li>
-      <li>Eine Aufnahme — bis zu 15&nbsp;Minuten.</li>
-    </ul>
   </div>
 </section>
 
@@ -364,13 +333,13 @@
       <div class="faq-body">
 
       <div class="faq-card faq-pick">
-        <div class="fc-head"><span class="gi" style="--c:#4a91ee"><svg data-icon="badge-check"></svg></span><b>Empfehlung<small>Genau, schnell und günstig</small></b></div>
+        <div class="fc-head"><span class="gi" style="--c:#4a91ee"><svg data-icon="badge-check"></svg></span><b>Meine Empfehlung<small>Genau, schnell und günstig</small></b></div>
         <div class="route">
           <div class="route-step"><small><svg data-icon="mic"></svg>Stimme → Transkript</small><span class="opts"><span class="opt">Whisper <em>mit NVIDIA-Grafikkarte</em></span><span class="or">oder</span><span class="opt">OpenAI <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span></span></span></div>
           <svg class="route-arrow" data-icon="arrow-right"></svg>
           <div class="route-step"><small><svg data-icon="sparkles"></svg>Transkript → fertiger Text</small><span class="opts"><span class="opt">OpenAI GPT-6.1 Terra <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span></span><span class="or">oder</span><span class="opt">Claude Sonnet&nbsp;5.5 <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span></span></span></div>
         </div>
-        <p class="fc-note">Warum: In den Tests hat GPT-6.1 Terra alle Modi genau umgesetzt und nie eine Frage beantwortet, statt sie aufzuschreiben. Claude Sonnet&nbsp;5.5 hat ebenfalls gut abgeschnitten. Die Verarbeitung kostet ≈&nbsp;0,002–0,004&nbsp;$ pro Satz.</p>
+        <p class="fc-note">Warum: In meinen Tests hat GPT-6.1 Terra alle Modi genau umgesetzt und nie eine Frage beantwortet, statt sie aufzuschreiben. Claude Sonnet&nbsp;5.5 hat ebenfalls gut abgeschnitten. Die Verarbeitung kostet ≈&nbsp;0,002–0,004&nbsp;$ pro Satz.</p>
       </div>
 
       <div class="faq-cards cols-4">
@@ -413,7 +382,7 @@
           <p class="fc-note">Die Bedingungen für das kostenlose Gemini stehen in Frage 5.</p>
         </div>
       </div>
-      <p class="fine">Empfehlungen und Geschwindigkeit stammen aus Tests: über 150 Prüfungen der Textverarbeitung (gleiche Sätze in verschiedenen Modi und Modellen). Preise sind Schätzungen nach den Tarifen der Dienste am 1.&nbsp;November 2026.</p>
+      <p class="fine">Empfehlungen und Geschwindigkeit stammen aus meinen Tests: über 150 Prüfungen der Textverarbeitung (gleiche Sätze in verschiedenen Modi und Modellen). Preise sind Schätzungen nach den Tarifen der Dienste am 1.&nbsp;November 2026.</p>
     </div></details>
 
     <!-- 2 -->
@@ -424,7 +393,7 @@
       <div class="faq-cards cols-3">
         <div class="faq-card">
           <div class="fc-head"><span class="gi" style="--c:#90bf6b"><svg data-icon="gift"></svg></span><b>Kostenlos</b></div>
-          <p class="fc-price">0&nbsp;¢</p>
+          <p class="fc-price">0&nbsp;$</p>
           <dl class="mini-route">
             <div><dt><svg data-icon="mic"></svg>Stimme → Transkript</dt><dd><span class="opts"><span class="opt">Whisper <em>auf dem Computer</em></span><span class="or">oder</span><span class="opt">Gemini <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span> <em>(kostenlos)</em></span></span></dd></div>
             <div><dt><svg data-icon="sparkles"></svg>Transkript → Text</dt><dd><span class="opts"><span class="opt">Gemini <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span> <em>(kostenlos)</em></span></span></dd></div>
@@ -442,12 +411,12 @@
         </div>
         <div class="faq-card">
           <div class="fc-head"><span class="gi" style="--c:#4a91ee"><svg data-icon="credit-card"></svg></span><b>Bezahlter Schlüssel</b></div>
-          <p class="fc-price">&lt;&nbsp;1&nbsp;¢ <small>pro Satz</small></p>
+          <p class="fc-price">&lt;&nbsp;0,01&nbsp;$ <small>pro Satz</small></p>
           <dl class="mini-route">
             <div><dt><svg data-icon="mic"></svg>Stimme → Transkript</dt><dd><span class="opts"><span class="opt">Whisper <em>auf dem Computer</em></span><span class="or">oder</span><span class="opt">OpenAI <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
             <div><dt><svg data-icon="sparkles"></svg>Transkript → Text</dt><dd><span class="opts"><span class="opt">OpenAI <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span></span><span class="or">oder</span><span class="opt">Claude <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span></span><span class="or">oder</span><span class="opt">Gemini <span class="kb" title="mit API-Schlüssel" aria-label="mit API-Schlüssel"><svg data-icon="key-round"></svg>API</span></span></span></dd></div>
           </dl>
-          <p class="fc-note">Du zahlst nur, was du nutzt. Stimme über OpenAI kostet bis zu 0,6&nbsp;¢ pro Minute. Die Ausgaben siehst du im Bereich „Kosten“.</p>
+          <p class="fc-note">Du zahlst nur, was du nutzt. Stimme über OpenAI kostet bis zu 0,006&nbsp;$ pro Minute. Die Ausgaben siehst du im Bereich „Kosten“.</p>
         </div>
       </div>
       <p class="fine">Preise sind Schätzungen nach den Tarifen der Dienste am 1.&nbsp;November 2026.</p>
@@ -520,13 +489,27 @@
       </div>
       <p class="fine">Angaben zum Speicher sind ungefähr und stammen von den Entwicklern von Whisper für den PC (whisper.cpp).</p>
     </div></details>
+
+    <!-- 7: обмеження -->
+    <details class="faq-q" id="faq-limits">
+      <summary><h3><span class="faq-num">7</span>Welche Einschränkungen gibt es?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
+      <div class="faq-body">
+      <ul class="faq-facts">
+        <li><svg data-icon="badge-check"></svg><span>Dies ist eine Testversion (β) — nur für Windows 64-Bit.</span></li>
+        <li><svg data-icon="clock"></svg><span>Claude per Abo läuft über dein installiertes Claude Code und antwortet langsamer als mit einem Anthropic-Schlüssel. Gemini wird nur per API-Schlüssel verbunden.</span></li>
+        <li><svg data-icon="wallet"></svg><span>Genaue Kosten für OpenAI und Anthropic siehst du mit einem Admin-Schlüssel. Für Gemini und ohne diesen Schlüssel zeigt ThinkInk eine Schätzung.</span></li>
+        <li><svg data-icon="zap-off"></svg><span>Sofortdiktat funktioniert mit Whisper oder OpenAI, nicht mit Gemini.</span></li>
+        <li><svg data-icon="clipboard-paste"></svg><span>Manche Programme mit erhöhten Rechten nehmen kein automatisches Einfügen an — dann kopierst du den Text aus dem Verlauf.</span></li>
+        <li><svg data-icon="timer"></svg><span>Eine Aufnahme — bis zu 15&nbsp;Minuten.</span></li>
+      </ul>
+    </div></details>
   </div>
 </section>
 
 <!-- ФІНАЛ -->
 <section class="final" id="final" aria-labelledby="final-title">
   <div class="final-inner">
-    <img src="../assets/brand/thinkink-3d.png" alt="" width="160" height="160" class="final-logo">
+    <img src="../assets/brand/thinkink-512.png" alt="" width="160" height="160" class="final-logo">
     <h2 id="final-title"><span class="hand">Denk laut.</span> ThinkInk schreibt.</h2>
     <a class="btn btn-primary" href="https://github.com/AndriyGusak/ThinkInk/releases/latest" data-download data-goatcounter-click="zavantazhennia-final"><svg data-icon="download"></svg>Für Windows herunterladen</a>
   </div>
@@ -536,11 +519,12 @@
 
 <footer class="foot">
   <span class="wordmark"><b>Think</b>Ink<sup>β</sup></span>
+  <nav class="foot-links" aria-label="Links"><a href="https://github.com/AndriyGusak/ThinkInk/releases"><svg data-icon="history"></svg>Neuigkeiten</a></nav>
   <span>Für Windows. Icons — <a href="../assets/Lucide.txt">Lucide (ISC)</a>, Schriften Noto Sans und Caveat — <a href="../assets/fonts/NotoSans-OFL.txt">OFL</a>.</span>
 </footer>
 
 <script src="../icons.js"></script>
-<script>window.TI_I18N = {"Голосове введення":"Spracheingabe","Перетворює мовлення на текст без додаткового редагування.":"Wandelt Sprache ohne zusätzliche Bearbeitung in Text um.","Треба купити молоко, хліб і яблука. Магазин біля дому закривається о дев’ятій.":"Ich muss Milch, Brot und Äpfel kaufen. Der Laden um die Ecke schließt um neun.","Миттєве диктування":"Sofortdiktat","Не призначено":"Nicht zugewiesen","Вставляє текст просто під час диктування, без адаптації.":"Fügt den Text schon während des Diktierens ein, ohne ihn zu überarbeiten.","Пишу звіт за жовтень, перший розділ про продажі…":"Ich schreibe den Bericht für Oktober, erster Abschnitt zum Vertrieb…","Виправлення":"Korrektur","Очищає усне мовлення від затинань і зайвих повторів, зберігаючи зміст і тон.":"Entfernt Stocken und unnötige Wiederholungen, erhält Inhalt und Ton.","Я, е-е, надішлю тобі кошторис завтра, ні, у п’ятницю. Треба ще, ще перевірити цифри.":"Ich schicke dir, äh, den Kostenvoranschlag morgen, nein, am Freitag. Ich muss noch, noch die Zahlen prüfen.","Я надішлю тобі кошторис у п’ятницю. Треба ще перевірити цифри.":"Ich schicke dir den Kostenvoranschlag am Freitag. Ich muss noch die Zahlen prüfen.","Діловий":"Sachlich","Переписує текст у чіткому діловому тоні, зберігаючи факти й намір.":"Formuliert in klarem sachlichem Ton und erhält Fakten und Absicht.","Я не встигаю глянути кошторис сьогодні. Давайте перенесемо обговорення на п’ятницю.":"Ich schaffe es heute nicht, mir den Kostenvoranschlag anzuschauen. Lass uns das auf Freitag schieben.","Я не встигаю переглянути кошторис сьогодні. Пропоную перенести обговорення на п’ятницю.":"Ich kann den Kostenvoranschlag heute leider nicht prüfen. Ich schlage vor, die Besprechung auf Freitag zu verschieben.","Дружній тон":"Freundlicher Ton","Робить формулювання простішими й дружнішими, зберігаючи зміст.":"Vereinfacht Formulierungen und macht sie freundlicher, ohne den Inhalt zu verändern.","Прошу повідомити, чи матимете ви можливість переглянути кошторис до п’ятниці.":"Bitte teilen Sie mir mit, ob Sie die Möglichkeit haben, den Kostenvoranschlag bis Freitag zu prüfen.","Підкажіть, будь ласка, чи зможете переглянути кошторис до п’ятниці.":"Können Sie mir kurz sagen, ob Sie bis Freitag einen Blick auf den Kostenvoranschlag werfen können?","Літературний":"Gepflegt","Надає тексту літературних формулювань, зберігаючи зміст і тон.":"Verwendet gepflegte Formulierungen und erhält Inhalt und Ton.","Ну короче вчора ми ходили в парк, і там було так класно, листя таке жовте всюди.":"Also, gestern waren wir halt im Park, und das war so cool, überall so gelbe Blätter.","Учора ми гуляли в парку. Там було чудово: усюди лежало жовте листя.":"Gestern spazierten wir durch den Park. Es war herrlich: Überall lag gelbes Laub.","Без води":"Kurzfassung","Прибирає воду й повторення думок, зберігає суттєві деталі.":"Entfernt Fülltext und wiederholte Gedanken, erhält wichtige Details.","Значить, по зустрічі… ми там довго говорили, але, загалом, вирішили, що запуск переносимо на десяте листопада, бо дизайн ще не готовий, ну і Оля відповідає за тексти.":"Also, zum Meeting… wir haben lange geredet, aber im Grunde beschlossen, den Start auf den zehnten November zu verschieben, weil das Design noch nicht fertig ist, und, na ja, Lena kümmert sich um die Texte.","Запуск перенесено на 10 листопада: дизайн ще не готовий. За тексти відповідає Оля.":"Start auf 10. November verschoben: Das Design ist noch nicht fertig. Lena ist für die Texte zuständig.","Переклад":"Übersetzung","Перекладає текст обраною мовою, зберігаючи зміст і тон.":"Übersetzt in die gewählte Sprache und erhält Inhalt und Ton.","Я не зможу приєднатися о третій. Можемо поговорити приблизно через пів години?":"Ich kann um drei nicht dazukommen. Können wir in etwa einer halben Stunde sprechen?","Створення промпту":"Prompt erstellen","Структурує твоє завдання як запит для ШІ, не виконуючи його.":"Strukturiert deine Aufgabe als KI-Prompt, ohne sie auszuführen.","Хочу підтягнути англійську для робочих зустрічей. У мене B1 і двадцять хвилин на день. Склади план на чотири тижні, таблицею.":"Ich will mein Englisch für Arbeitsmeetings auffrischen. Ich habe B1 und zwanzig Minuten am Tag. Mach einen Plan für vier Wochen, als Tabelle.","Склади план вивчення англійської на 4 тижні для участі в робочих зустрічах.\n\nКонтекст: мій рівень — B1; маю 20 хвилин на день.\nФормат результату: таблиця.":"Erstelle einen 4-Wochen-Lernplan für Englisch, um an Arbeitsmeetings teilzunehmen.\n\nKontext: mein Niveau ist B1; ich habe 20 Minuten pro Tag.\nErgebnisformat: Tabelle.","Електронний лист":"E-Mail","Оформлює диктування як лист із привітанням, абзацами й підписом.":"Formatiert Diktate als E-Mail mit Begrüßung, Absätzen und Signatur.","Лист Олені. Попроси надіслати оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.":"E-Mail an Anna. Bitte sie, den aktualisierten Kostenvoranschlag bis Freitag zu schicken. Ich muss ihn mit dem Team abstimmen.","Добрий день, Олено!\n\nБудь ласка, надішліть оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.\n\nЗ повагою,\n[Ваше ім’я]":"Hallo Anna,\n\nkönnten Sie mir bitte den aktualisierten Kostenvoranschlag bis Freitag schicken? Ich muss ihn mit dem Team abstimmen.\n\nViele Grüße\n[Dein Name]","Редагування":"Bearbeitung","Переробляє виділений текст за голосовою командою і копіює результат у буфер обміну.":"Überarbeitet markierten Text per Sprachbefehl und kopiert das Ergebnis in die Zwischenablage.","«Скороти, але збережи всі дати»":"„Kürze es, aber behalte alle Daten“","У буфері обміну":"In der Zwischenablage","Скорочений варіант із тими самими датами. Встав його через Ctrl + V там, де він потрібен.":"Eine kürzere Fassung mit denselben Daten. Füge sie mit Ctrl + V dort ein, wo du sie brauchst.","У полі з’явилося":"Im Feld erschienen","Я, [е-е,] надішлю тобі кошторис [завтра,] [ні,] у п’ятницю. Треба ще, [ще,] перевірити цифри. Можливо, сума трохи зміниться.":"Ich schicke dir, [äh,] den Kostenvoranschlag [morgen,] [nein,] am Freitag. Ich muss [noch,] noch die Zahlen prüfen. Die Summe kann sich etwas ändern.","Готово":"Fertig","Міні: тонка смужка, яка не заважає. Наведи курсор — вона підросте.":"Mini: ein schmaler Streifen, der nicht stört. Fahr mit der Maus darüber, dann wird er größer.","Компакт: невелика капсула з кнопкою режиму й мікрофоном.":"Kompakt: eine kleine Kapsel mit Modustaste und Mikrofon.","Великий: режим, назва й кнопка запису в одній капсулі.":"Groß: Modus, Name und Aufnahmetaste in einer Kapsel.","Авто: тонка смужка у спокої, капсула при наведенні, а після затримки — повний віджет.":"Auto: im Ruhezustand ein schmaler Streifen, beim Überfahren eine Kapsel und nach kurzer Zeit das volle Widget.","Натискання":"Umschalten","Інсталятор ThinkInk {v} для Windows":"ThinkInk {v} Installer für Windows"};</script>
+<script>window.TI_I18N = {"Голосове введення":"Spracheingabe","Перетворює мовлення на текст без додаткового редагування.":"Wandelt Sprache ohne zusätzliche Bearbeitung in Text um.","Треба купити молоко, хліб і яблука. Магазин біля дому закривається о дев’ятій.":"Ich muss Milch, Brot und Äpfel kaufen. Der Laden um die Ecke schließt um neun.","Миттєве диктування":"Sofortdiktat","Не призначено":"Nicht zugewiesen","Вставляє текст просто під час диктування, без адаптації.":"Fügt den Text schon während des Diktierens ein, ohne ihn zu überarbeiten.","Пишу звіт за жовтень, перший розділ про продажі…":"Ich schreibe den Bericht für Oktober, erster Abschnitt zum Vertrieb…","Виправлення":"Korrektur","Очищає усне мовлення від затинань і зайвих повторів, зберігаючи зміст і тон.":"Entfernt Stocken und unnötige Wiederholungen, erhält Inhalt und Ton.","Я, е-е, надішлю тобі кошторис завтра, ні, у п’ятницю. Треба ще, ще перевірити цифри.":"Ich schicke dir, äh, den Kostenvoranschlag morgen, nein, am Freitag. Ich muss noch, noch die Zahlen prüfen.","Я надішлю тобі кошторис у п’ятницю. Треба ще перевірити цифри.":"Ich schicke dir den Kostenvoranschlag am Freitag. Ich muss noch die Zahlen prüfen.","Діловий":"Sachlich","Переписує текст у чіткому діловому тоні, зберігаючи факти й намір.":"Formuliert in klarem sachlichem Ton und erhält Fakten und Absicht.","Я не встигаю глянути кошторис сьогодні. Давайте перенесемо обговорення на п’ятницю.":"Ich schaffe es heute nicht, mir den Kostenvoranschlag anzuschauen. Lass uns das auf Freitag schieben.","Я не встигаю переглянути кошторис сьогодні. Пропоную перенести обговорення на п’ятницю.":"Ich kann den Kostenvoranschlag heute leider nicht prüfen. Ich schlage vor, die Besprechung auf Freitag zu verschieben.","Дружній тон":"Freundlicher Ton","Робить формулювання простішими й дружнішими, зберігаючи зміст.":"Vereinfacht Formulierungen und macht sie freundlicher, ohne den Inhalt zu verändern.","Прошу повідомити, чи матимете ви можливість переглянути кошторис до п’ятниці.":"Bitte teilen Sie mir mit, ob Sie die Möglichkeit haben, den Kostenvoranschlag bis Freitag zu prüfen.","Підкажіть, будь ласка, чи зможете переглянути кошторис до п’ятниці.":"Können Sie mir kurz sagen, ob Sie bis Freitag einen Blick auf den Kostenvoranschlag werfen können?","Літературний":"Gepflegt","Надає тексту літературних формулювань, зберігаючи зміст і тон.":"Verwendet gepflegte Formulierungen und erhält Inhalt und Ton.","Ну короче вчора ми ходили в парк, і там було так класно, листя таке жовте всюди.":"Also, gestern waren wir halt im Park, und das war so cool, überall so gelbe Blätter.","Учора ми гуляли в парку. Там було чудово: усюди лежало жовте листя.":"Gestern spazierten wir durch den Park. Es war herrlich: Überall lag gelbes Laub.","Без води":"Kurzfassung","Прибирає воду й повторення думок, зберігає суттєві деталі.":"Entfernt Fülltext und wiederholte Gedanken, erhält wichtige Details.","Значить, по зустрічі… ми там довго говорили, але, загалом, вирішили, що запуск переносимо на десяте листопада, бо дизайн ще не готовий, ну і Оля відповідає за тексти.":"Also, zum Meeting… wir haben lange geredet, aber im Grunde beschlossen, den Start auf den zehnten November zu verschieben, weil das Design noch nicht fertig ist, und, na ja, Lena kümmert sich um die Texte.","Запуск перенесено на 10 листопада: дизайн ще не готовий. За тексти відповідає Оля.":"Start auf 10. November verschoben: Das Design ist noch nicht fertig. Lena ist für die Texte zuständig.","Переклад":"Übersetzung","Перекладає текст обраною мовою, зберігаючи зміст і тон.":"Übersetzt in die gewählte Sprache und erhält Inhalt und Ton.","Я не зможу приєднатися о третій. Можемо поговорити приблизно через пів години?":"Ich kann um drei nicht dazukommen. Können wir in etwa einer halben Stunde sprechen?","Створення промпту":"Prompt erstellen","Структурує твоє завдання як запит для ШІ, не виконуючи його.":"Strukturiert deine Aufgabe als KI-Prompt, ohne sie auszuführen.","Хочу підтягнути англійську для робочих зустрічей. У мене B1 і двадцять хвилин на день. Склади план на чотири тижні, таблицею.":"Ich will mein Englisch für Arbeitsmeetings auffrischen. Ich habe B1 und zwanzig Minuten am Tag. Mach einen Plan für vier Wochen, als Tabelle.","Склади план вивчення англійської на 4 тижні для участі в робочих зустрічах.\n\nКонтекст: мій рівень — B1; маю 20 хвилин на день.\nФормат результату: таблиця.":"Erstelle einen 4-Wochen-Lernplan für Englisch, um an Arbeitsmeetings teilzunehmen.\n\nKontext: mein Niveau ist B1; ich habe 20 Minuten pro Tag.\nErgebnisformat: Tabelle.","Електронний лист":"E-Mail","Оформлює диктування як лист із привітанням, абзацами й підписом.":"Formatiert Diktate als E-Mail mit Begrüßung, Absätzen und Signatur.","Лист Олені. Попроси надіслати оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.":"E-Mail an Anna. Bitte sie, den aktualisierten Kostenvoranschlag bis Freitag zu schicken. Ich muss ihn mit dem Team abstimmen.","Добрий день, Олено!\n\nБудь ласка, надішліть оновлений кошторис до п’ятниці. Мені потрібно погодити його з командою.\n\nЗ повагою,\n[Ваше ім’я]":"Hallo Anna,\n\nkönnten Sie mir bitte den aktualisierten Kostenvoranschlag bis Freitag schicken? Ich muss ihn mit dem Team abstimmen.\n\nViele Grüße\n[Dein Name]","Редагування":"Bearbeitung","Виділи текст у будь-якій програмі і скажи, що з ним зробити. Результат — у буфері обміну.":"Markiere Text in einem beliebigen Programm und sag, was damit passieren soll. Das Ergebnis landet in der Zwischenablage.","«Скороти, але збережи всі дати»":"„Kürze es, aber behalte alle Daten“","У буфері обміну":"In der Zwischenablage","Скорочений варіант із тими самими датами. Встав його через Ctrl + V там, де він потрібен.":"Eine kürzere Fassung mit denselben Daten. Füge sie mit Ctrl + V dort ein, wo du sie brauchst.","У полі з’явилося":"Im Feld erschienen","Я, [е-е,] надішлю тобі кошторис [завтра,] [ні,] у п’ятницю. Треба ще, [ще,] перевірити цифри. Можливо, сума трохи зміниться.":"Ich schicke dir, [äh,] den Kostenvoranschlag [morgen,] [nein,] am Freitag. Ich muss [noch,] noch die Zahlen prüfen. Die Summe kann sich etwas ändern.","Готово":"Fertig","Міні: тонка смужка, яка не заважає. Наведи курсор — вона підросте.":"Mini: ein schmaler Streifen, der nicht stört. Fahr mit der Maus darüber, dann wird er größer.","Компакт: невелика капсула з кнопкою режиму й мікрофоном.":"Kompakt: eine kleine Kapsel mit Modustaste und Mikrofon.","Великий: режим, назва й кнопка запису в одній капсулі.":"Groß: Modus, Name und Aufnahmetaste in einer Kapsel.","Авто: тонка смужка у спокої, капсула при наведенні, а після затримки — повний віджет.":"Auto: im Ruhezustand ein schmaler Streifen, beim Überfahren eine Kapsel und nach kurzer Zeit das volle Widget.","Натискання":"Umschalten","Інсталятор ThinkInk {v} для Windows":"ThinkInk {v} Installer für Windows"};</script>
 <script src="../script.js"></script>
 </body>
 </html>

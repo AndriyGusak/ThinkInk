@@ -553,3 +553,35 @@ section[id]{scroll-margin-top:72px}
   .models{grid-template-columns:repeat(2,minmax(0,1fr))}
   .faq-card{padding:20px}
 }
+
+/* 02.11: завантаження — версія, розмір і пояснення попередження Windows */
+.dl-meta{margin:14px 0 0;font-size:13px;color:var(--muted)}
+.dl-meta a{color:inherit}
+.dl-warn{display:flex;flex-direction:column;align-items:center;max-width:520px;margin:10px auto 0;text-align:left}
+.dl-warn summary{list-style:none;cursor:pointer;display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:600;color:var(--ink);padding:6px 14px;border-radius:18px;background:var(--ctrl),var(--base);border:1px solid var(--ctrl-edge);box-shadow:var(--ctrl-shadow);transition:background .15s}
+.dl-warn summary:hover{background:linear-gradient(var(--hover),var(--hover)),var(--base)}
+.dl-warn summary::-webkit-details-marker{display:none}
+.dl-warn summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.ic-tri{width:18px;height:18px;color:#d9822b;flex:none}
+.dl-pop{margin-top:10px;padding:14px 18px;border-radius:16px;background:var(--card-solid);border:1px solid var(--edge);box-shadow:0 18px 40px #1d33551a;font-size:14px;line-height:1.55;color:var(--muted)}
+.dl-pop p{margin:0 0 8px}.dl-pop p:last-child{margin:0}
+.dl-pop b{color:var(--ink)}
+/* Кнопка в шапці */
+.top-dl{display:none;height:38px;padding:0 16px;font-size:14px;gap:8px}
+.top.show-dl .top-dl{display:inline-flex}
+.top-dl svg{width:16px;height:16px}
+/* Підвал */
+.foot{flex-wrap:wrap}
+.foot-links{display:flex;gap:18px;margin-left:auto;margin-right:24px}
+.foot-links a{display:inline-flex;gap:6px;align-items:center;color:var(--ink);text-decoration:none;font-size:14px}
+.foot-links svg[data-icon]{width:16px;height:16px;color:var(--accent)}
+/* Редагування — анімація всередині блоку режимів */
+.mode-panel.is-edit .mp-body{display:none}
+.mode-panel:not(.is-edit) .edit-stage{display:none}
+.mode-panel .edit-stage{margin:18px 0 0;padding:40px 0 34px}
+@media (max-width:600px){
+  .top-dl span{display:none}.top-dl{padding:0 11px}
+  .foot-links{margin:8px 0;width:100%;flex-wrap:wrap}
+  .mode-panel .voice-bubble .hand{font-size:20px}
+}
+@media (max-width:600px){.mode-panel .doc{padding:22px}.mode-panel .doc-text{font-size:16px;line-height:1.55}}
