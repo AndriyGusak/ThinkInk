@@ -191,16 +191,16 @@ sceneWidget.querySelector('.w-rec svg').dataset.icon = 'arrow-up';
 /* Редагування виділеного */
 const editStage = document.getElementById('edit-stage');
 function renderEdit(phase) {
-  // p1 виділення, p2 голосова команда, p3 «Результат скопійовано», p4 вставлено через Ctrl + V
+  // p1 виділення, p2 голосова команда, p3 англійський текст замість виділеного, p4 + «Результат скопійовано»
   editStage.classList.toggle('p1', phase >= 1);
   editStage.classList.toggle('p2', phase === 2);
-  editStage.classList.toggle('p3', phase === 3);
-  editStage.classList.toggle('p4', phase >= 4);
+  editStage.classList.toggle('p4', phase >= 3);
+  editStage.classList.toggle('p3', phase === 4);
 }
-// Коли сцена у полі зору: виділення → команда голосом → копія в буфер → вставлення, потім повтор
+// Коли сцена у полі зору: виділення → команда голосом → новий текст → «Результат скопійовано», потім повтор
 let editTimer = null;
 function playEdit() {
-  const seq = [[1, 900], [2, 1600], [3, 1900], [4, 3400], [0, 900]];
+  const seq = [[1, 900], [2, 1600], [3, 1000], [4, 3000], [0, 900]];
   let k = 0;
   const step = () => { renderEdit(seq[k][0]); editTimer = setTimeout(step, seq[k][1]); k = (k + 1) % seq.length; };
   step();

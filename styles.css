@@ -586,3 +586,62 @@ section[id]{scroll-margin-top:72px}
   .mode-panel .voice-bubble .hand{font-size:20px}
 }
 @media (max-width:600px){.mode-panel .doc{padding:22px}.mode-panel .doc-text{font-size:16px;line-height:1.55}}
+
+/* ——— Поекранна подача (широкий екран): один блок = один екран, м’яке прилипання ——— */
+@media (min-width:900px) and (min-height:640px){
+  html{scroll-snap-type:y proximity}
+  .hero,.scene,.modes,.privacy,.faq,.iface .screen{scroll-snap-align:start}
+  .modes,.privacy,.faq,.iface .screen{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:96px 0 48px}
+  .modes>.wrap,.privacy>.wrap,.faq>.wrap{width:min(1160px,100% - 32px)}
+  .iface{padding:0}
+  .iface .screen>:first-child{margin-top:0}
+  .final{min-height:calc(100svh - 95px);display:flex;align-items:center;justify-content:center;padding:96px 16px 48px}
+}
+
+/* Рядки довкола абзацу — імітація слів різної довжини (Андрій, 02.11) */
+.doc-line{display:flex;flex-wrap:wrap;gap:7px;height:10px;margin:6px 0;overflow:hidden;background:none;border-radius:0}
+.doc-line i{flex:none;width:calc(var(--w) * 1px);height:10px;border-radius:5px;background:var(--rule)}
+.doc-line.short{width:auto}
+/* Значки режимів — під вікном налаштувань, в один ряд */
+@media (min-width:900px) and (min-height:640px){
+  .iface .screen .icon-glass{margin-top:32px;gap:14px;max-width:none}
+  .iface .screen .icon-glass .gi{width:56px;height:56px;border-radius:16px;transform:none}
+  .iface .screen .details{margin-top:0}
+}
+/* Екран «Налаштування»: текст і значки ліворуч, вікно праворуч; «Що ще є»: картки (02.11) */
+@media (min-width:900px) and (min-height:640px){
+  .iface .screen.split{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:center;align-content:center}
+  .split-copy h2{font-size:clamp(30px,3.4vw,44px)}
+  .iface .screen.split .app-shot{margin:0;max-width:none}
+  .iface .screen .icon-glass{justify-content:flex-start;margin:34px 0 0;gap:12px;max-width:380px}
+  .iface .screen .icon-glass .gi{width:52px;height:52px;border-radius:15px;transform:none}
+  .iface .screen .details{margin-top:44px;gap:16px}
+  .iface .screen .details li{padding:20px 22px;border-radius:var(--radius-card);background:var(--card);border:1px solid var(--rule);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+}
+@media (min-width:900px) and (min-height:640px){
+  .iface .screen.split{grid-template-columns:1fr}
+  .iface .screen.split .app-shot{max-width:960px;margin:40px auto 0}
+}
+@media (min-width:1200px) and (min-height:640px){
+  .iface .screen.split{grid-template-columns:300px minmax(0,1fr);gap:44px}
+  .iface .screen.split .app-shot{width:960px;zoom:.85;margin:0;justify-self:end}
+}
+@media (min-width:1200px) and (min-height:640px){
+  .iface .screen.split{grid-template-columns:340px minmax(0,1fr);gap:40px}
+  .iface .screen.split .app-shot{zoom:.8}
+  .split-copy h2{font-size:38px}
+  .iface .screen .icon-glass{gap:10px;max-width:340px}
+  .iface .screen .icon-glass .gi{width:46px;height:46px;border-radius:14px}
+}
+
+/* Підпис під кнопками з’являється після кнопок, а не раніше (02.11) */
+.dl-meta,.dl-warn{animation:typed 1.2s var(--ease) 2.4s both}
+/* 02.11 v3: великі «гойдалки» значків під вікном на всю ширину; «Що ще є» — 4×3 разом із приватністю */
+@media (min-width:900px) and (min-height:640px){
+  .iface .screen.split .icon-glass{grid-column:1/-1;justify-content:center;max-width:none;margin:36px 0 0;gap:18px}
+  .iface .screen.split .icon-glass .gi{width:76px;height:76px;border-radius:22px;transform:translateY(calc((var(--p,0) - .5) * var(--par,40px)))}
+  .iface .screen .details{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:36px}
+  .iface .screen .details li{padding:18px 18px;font-size:14px}
+  .iface .screen .details b{font-size:16px}
+}
+@media (min-width:900px) and (max-width:1199px){.iface .screen .details{grid-template-columns:repeat(2,minmax(0,1fr))}}

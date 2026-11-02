@@ -193,9 +193,9 @@
       </div>
       <div class="edit-stage" id="edit-stage" aria-hidden="true">
         <div class="doc">
-          <p class="doc-line muted-line"></p>
+          <p class="doc-line" aria-hidden="true"><i style="--w:46"></i><i style="--w:14"></i><i style="--w:72"></i><i style="--w:30"></i><i style="--w:8"></i><i style="--w:58"></i><i style="--w:96"></i><i style="--w:22"></i><i style="--w:40"></i><i style="--w:64"></i><i style="--w:12"></i><i style="--w:52"></i><i style="--w:34"></i><i style="--w:80"></i><i style="--w:18"></i><i style="--w:44"></i><i style="--w:26"></i><i style="--w:70"></i><i style="--w:10"></i><i style="--w:48"></i><i style="--w:92"></i><i style="--w:16"></i><i style="--w:38"></i><i style="--w:60"></i><i style="--w:24"></i><i style="--w:84"></i><i style="--w:12"></i><i style="--w:50"></i><i style="--w:66"></i><i style="--w:20"></i><i style="--w:42"></i><i style="--w:8"></i><i style="--w:74"></i><i style="--w:32"></i></p>
           <p class="doc-text"><span class="sel" id="edit-before">Je voulais juste dire que, malheureusement, aujourd’hui je n’arrive vraiment pas à regarder le devis correctement, donc, si ça ne vous dérange pas, on pourrait peut-être reporter la discussion à vendredi.</span><span class="sel-after" id="edit-after">Sorry, I won’t get to the estimate today. Can we discuss it on Friday?</span></p>
-          <p class="doc-line muted-line short"></p>
+          <p class="doc-line short" aria-hidden="true"><i style="--w:62"></i><i style="--w:20"></i><i style="--w:8"></i><i style="--w:88"></i><i style="--w:36"></i><i style="--w:54"></i><i style="--w:14"></i><i style="--w:30"></i></p>
         </div>
         <div class="voice-bubble"><svg data-icon="mic"></svg><span class="hand">Raccourcis et traduis en anglais</span></div>
         <div class="copied-toast"><svg data-icon="clipboard-check"></svg><span><b>Résultat copié</b>Colle avec Ctrl&nbsp;+&nbsp;V</span></div>
@@ -209,6 +209,7 @@
 <section class="iface" id="interface" aria-labelledby="iface-title">
   <div class="glass-field" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
+    <div class="screen">
     <h2 id="iface-title">Un widget qui ne gêne pas</h2>
     <p class="section-lead">Une capsule de verre flotte au-dessus des fenêtres et laisse passer les clics là où elle est transparente. Tu peux la déplacer n’importe où, la réduire à une fine bande ou l’agrandir avec le nom du mode.</p>
 
@@ -229,6 +230,13 @@
       <p class="size-note" id="size-note" aria-live="polite">Widget complet&nbsp;: mode, nom et bouton d’enregistrement dans une capsule.</p>
     </div>
 
+    </div>
+
+    <div class="screen split">
+    <div class="split-copy">
+      <h2>Tous les réglages dans une seule fenêtre</h2>
+      <p class="section-lead">Chaque mode peut être activé, désactivé ou associé à un raccourci. Historique, statistiques et clés API sont dans les sections voisines.</p>
+    </div>
     <div class="app-shot" aria-hidden="true">
       <div class="as-title"><span class="wordmark"><b>Think</b>Ink<sup>β</sup></span><span class="win-ctl"><svg data-icon="minus"></svg><svg data-icon="x"></svg></span></div>
       <div class="as-body">
@@ -252,34 +260,30 @@
     </div>
 
     <div class="icon-glass" id="icon-glass" aria-hidden="true"></div>
+    </div>
 
+    <div class="screen" id="privacy">
+    <h2>Ce que ThinkInk offre encore</h2>
+    <p class="section-lead">Confidentialité, travail hors ligne, thèmes, historique, statistiques et plus.</p>
     <ul class="details">
-      <li><svg data-icon="layers"></svg><div><b>Deux thèmes&nbsp;: Crystal et Graphite</b>Clair, sombre ou selon le système. Le verre du widget et des menus se règle à part.</div></li>
-      <li><svg data-icon="clipboard-check"></svg><div><b>«&nbsp;Résultat copié&nbsp;»</b>Après la modification, le texte est déjà dans le presse-papiers, et une petite carte te le rappelle&nbsp;: Ctrl&nbsp;+&nbsp;V.</div></li>
-      <li><svg data-icon="history"></svg><div><b>Historique avec restauration</b>Recherche, filtre par mode et restauration des dix dernières suppressions.</div></li>
-      <li><svg data-icon="plug"></svg><div><b>L’IA de ton choix</b>Texte&nbsp;: OpenAI, Claude ou Gemini, via un compte ou une clé. Voix&nbsp;: Whisper sur ton ordinateur, OpenAI ou Gemini.</div></li>
-      <li><svg data-icon="languages"></svg><div><b>Traduction pendant la dictée</b>Tu parles une langue, et le texte apparaît dans une autre.</div></li>
-      <li><svg data-icon="messages-square"></svg><div><b>Sept langues</b>L’interface existe en français, anglais, ukrainien, allemand, polonais, espagnol et portugais.</div></li>
-      <li><svg data-icon="chart-column"></svg><div><b>Statistiques et dépenses</b>Combien de mots dictés sur 7, 30 et 365 jours, et un calendrier des dépenses pour chaque service.</div></li>
-      <li><svg data-icon="cpu"></svg><div><b>Traitement sans réglages compliqués</b>Tu choisis qui reconnaît la voix et qui travaille le texte. Ce qui manque se voit tout de suite, et un court guide en sept étapes t’explique quoi faire.</div></li>
-      <li><svg data-icon="eye"></svg><div><b>Tutoriel sur le vrai widget</b>Un test intégré te guide pas à pas dans la dictée, la traduction et la modification.</div></li>
+      <li><svg data-icon="hard-drive"></svg><div><b>Tes données restent chez toi</b>Ta voix n’est jamais enregistrée sur le disque. Historique et réglages restent dans ton profil Windows.</div></li>
+      <li><svg data-icon="wifi-off"></svg><div><b>Avec ou sans internet</b>Whisper reconnaît la voix sur ton ordinateur. En ligne, rien ne part ailleurs que vers les services choisis.</div></li>
+      <li><svg data-icon="key-round"></svg><div><b>Les clés API sont chiffrées</b>Elles sont protégées par Windows et jamais affichées dans l’interface.</div></li>
+      <li><svg data-icon="plug"></svg><div><b>L’IA de ton choix</b>Texte&nbsp;: OpenAI, Claude ou Gemini. Voix&nbsp;: Whisper sur l’ordinateur, OpenAI ou Gemini.</div></li>
+      <li><svg data-icon="languages"></svg><div><b>Traduction immédiate</b>Tu parles dans une langue, le texte apparaît dans une autre. Pas besoin de traduire à part.</div></li>
+      <li><svg data-icon="messages-square"></svg><div><b>Conçu en ukrainien</b>Modes et exemples ont été créés en ukrainien. L’interface existe dans six autres langues.</div></li>
+      <li><svg data-icon="clipboard-check"></svg><div><b>«&nbsp;Résultat copié&nbsp;»</b>Après l’édition, le texte est déjà dans le presse-papiers. Une carte te le rappelle&nbsp;: Ctrl + V.</div></li>
+      <li><svg data-icon="history"></svg><div><b>Historique avec restauration</b>Recherche, filtre par mode et restauration des dix dernières entrées supprimées.</div></li>
+      <li><svg data-icon="layers"></svg><div><b>Thèmes Crystal et Graphite</b>Clair, sombre ou selon le système. Le verre du widget et des menus se règle à part.</div></li>
+      <li><svg data-icon="chart-column"></svg><div><b>Statistiques et dépenses</b>Le nombre de mots dictés sur 7, 30, 365 jours, et un calendrier des dépenses par service.</div></li>
+      <li><svg data-icon="cpu"></svg><div><b>Traitement sans complications</b>Tu choisis qui reconnaît la voix et qui traite le texte. Ce qui manque se voit tout de suite.</div></li>
+      <li><svg data-icon="eye"></svg><div><b>Apprentissage sur le widget</b>Un test intégré te guide pas à pas dans la dictée, la traduction et l’édition.</div></li>
     </ul>
-  </div>
-</section>
-
-<!-- ПРИВАТНІСТЬ -->
-<section class="privacy" id="privacy" aria-labelledby="privacy-title">
-  <div class="wrap privacy-grid">
-    <h2 id="privacy-title">Tes données sous ton contrôle</h2>
-    <div class="facts">
-      <p><svg data-icon="cpu"></svg><span><b>Ta voix n’est jamais enregistrée sur le disque.</b> L’audio reste uniquement en mémoire pendant le traitement.</span></p>
-      <p><svg data-icon="hard-drive"></svg><span><b>L’historique et les paramètres restent dans ton profil Windows.</b> Il n’y a pas de serveur à part avec tes textes.</span></p>
-      <p><svg data-icon="key-round"></svg><span><b>Les clés API sont chiffrées</b> par Windows et ne s’affichent jamais dans l’interface.</span></p>
-      <p><svg data-icon="wifi-off"></svg><span><b>La reconnaissance peut fonctionner sans internet.</b> Whisper tourne sur ton ordinateur, avec ou sans carte graphique NVIDIA. Tu peux choisir le modèle&nbsp;: du rapide Small au précis Large&nbsp;v3.</span></p>
-      <p><svg data-icon="cloud"></svg><span><b>En ligne, uniquement là où tu choisis.</b> Si tu choisis OpenAI ou Gemini pour la voix, l’audio y est envoyé. Le texte va uniquement au service choisi pour le texte&nbsp;: OpenAI, Claude ou Gemini. Avec la clé gratuite Gemini, Google peut utiliser les textes pour améliorer son service.</span></p>
     </div>
   </div>
 </section>
+
+
 
 <!-- ЧАСТІ ПИТАННЯ -->
 <section class="faq" id="faq" aria-labelledby="faq-title">
@@ -289,7 +293,7 @@
 
     <!-- 1 -->
     <details class="faq-q" id="faq-q0">
-      <summary><h3><span class="faq-num">1</span>Comment fonctionne ThinkInk&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
+      <summary><h3><span class="faq-num">1</span>Comment la voix devient-elle un texte prêt&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
       <div class="faq-body">
       <p class="faq-q-lead">En deux étapes. Pour chaque étape, tu choisis un service.</p>
       <div class="flow" aria-label="Voix, puis transcription, puis texte final">
@@ -329,7 +333,7 @@
 
     <!-- 1 -->
     <details class="faq-q" id="faq-q1">
-      <summary><h3><span class="faq-num">2</span>Que choisir&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
+      <summary><h3><span class="faq-num">2</span>Quel service d’IA choisir&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
       <div class="faq-body">
 
       <div class="faq-card faq-pick">
@@ -387,7 +391,7 @@
 
     <!-- 2 -->
     <details class="faq-q" id="faq-q2">
-      <summary><h3><span class="faq-num">3</span>Combien ça coûte&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
+      <summary><h3><span class="faq-num">3</span>Faudra-t-il payer quelque chose&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
       <div class="faq-body">
       <p class="faq-q-lead">ThinkInk lui-même est gratuit. Tu paies seulement le service d’IA, et pas toujours.</p>
       <div class="faq-cards cols-3">
@@ -440,7 +444,7 @@
 
     <!-- 3 -->
     <details class="faq-q" id="faq-q3">
-      <summary><h3><span class="faq-num">5</span>Comment utiliser Gemini gratuitement&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
+      <summary><h3><span class="faq-num">5</span>Peut-on traiter le texte gratuitement&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
       <div class="faq-body">
       <p class="faq-q-lead">Il te faut seulement une clé Gemini gratuite. L’abonnement Google AI ne convient pas&nbsp;: Google ne l’autorise pas dans d’autres programmes.</p>
       <ol class="faq-steps">
@@ -459,7 +463,7 @@
 
     <!-- 4 -->
     <details class="faq-q" id="faq-q4">
-      <summary><h3><span class="faq-num">6</span>Quel ordinateur faut-il&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
+      <summary><h3><span class="faq-num">6</span>Mon ordinateur convient-il&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
       <div class="faq-body">
       <div class="faq-cards cols-2">
         <div class="faq-card">
@@ -492,7 +496,7 @@
 
     <!-- 7: обмеження -->
     <details class="faq-q" id="faq-limits">
-      <summary><h3><span class="faq-num">7</span>Quelles sont les limites&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
+      <summary><h3><span class="faq-num">7</span>Que ne sait pas encore faire ThinkInk&nbsp;?</h3><svg class="faq-chev" data-icon="chevron-down"></svg></summary>
       <div class="faq-body">
       <ul class="faq-facts">
         <li><svg data-icon="badge-check"></svg><span>C’est une version de test β, uniquement pour Windows 64 bits.</span></li>
