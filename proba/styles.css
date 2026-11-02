@@ -633,3 +633,6 @@ section[id]{scroll-margin-top:72px}
   .iface .screen .icon-glass{gap:10px;max-width:340px}
   .iface .screen .icon-glass .gi{width:46px;height:46px;border-radius:14px}
 }
+
+/* Підпис під кнопками з’являється після кнопок, а не раніше (02.11) */
+.dl-meta,.dl-warn{animation:typed 1.2s var(--ease) 2.4s both}
