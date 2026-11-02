@@ -107,6 +107,7 @@ svg[data-icon]{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width
 .btn-primary{color:#fff;background:linear-gradient(170deg,#ffffff38,#ffffff00 55%),var(--brand);border-color:#ffffff55;box-shadow:inset 0 1px 0 #ffffff80,inset 0 -2px 0 #0a2a7a40,0 8px 22px #2f62e040}
 .btn-primary.is-soon{cursor:default}
 .btn-primary.is-soon:hover{background:linear-gradient(170deg,#ffffff38,#ffffff00 55%),var(--brand)}
+.btn-primary:hover{background:linear-gradient(#ffffff1f,#ffffff1f),linear-gradient(170deg,#ffffff38,#ffffff00 55%),var(--brand)}
 
 /* ——— Скляний віджет (копія пропорцій реального) ——— */
 .widget{--w-accent:#ac86e9;position:relative;display:grid;grid-template-columns:88px minmax(0,1fr) 88px;align-items:center;gap:10px;width:420px;max-width:100%;height:68px;padding:10px;border-radius:var(--radius-capsule);background:var(--glass-bg);border:1px solid var(--w-edge);box-shadow:var(--w-shadow);backdrop-filter:blur(16px) saturate(1.18);-webkit-backdrop-filter:blur(16px) saturate(1.18)}
