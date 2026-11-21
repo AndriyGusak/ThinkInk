@@ -8,6 +8,10 @@
 
 **Думай уголос. Я напишу, як треба.** — твій ThinkInk
 
+<p align="center">
+  <img src="docs/images/en/demo.gif" alt="Демо ThinkInk: диктування стає чистим текстом, листом і перекладом" width="820">
+</p>
+
 ThinkInk слухає твій голос і вставляє в будь-яку програму Windows уже готовий текст: без «е-е», з правильними комами, діловим тоном або англійською — як скажеш.
 
 **[Завантажити для Windows](https://github.com/AndriyGusak/ThinkInk/releases/latest)** · **[Сайт thinkink.com.ua](https://thinkink.com.ua)** · [Часті питання](https://thinkink.com.ua/#faq)

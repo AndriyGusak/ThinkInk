@@ -8,6 +8,10 @@
 
 **Think out loud. I’ll write it right.** — your ThinkInk
 
+<p align="center">
+  <img src="docs/images/en/demo.gif" alt="ThinkInk demo: dictation turns into clean text, an email and a translation" width="820">
+</p>
+
 ThinkInk listens to your voice and types finished text into any Windows app: no “um”s, correct punctuation, a professional tone or another language — whatever you ask for.
 
 **[Download for Windows](https://github.com/AndriyGusak/ThinkInk/releases/latest)** · [Website](https://thinkink.com.ua/en/) · [FAQ](https://thinkink.com.ua/en/#faq)
